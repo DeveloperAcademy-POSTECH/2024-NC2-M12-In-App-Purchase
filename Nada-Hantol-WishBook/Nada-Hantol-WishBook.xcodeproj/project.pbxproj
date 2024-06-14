@@ -14,6 +14,7 @@
 		82F7CC582C1BDFEF00ACECA1 /* SaleWish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F7CC572C1BDFEF00ACECA1 /* SaleWish.swift */; };
 		82F7CC5A2C1BE06000ACECA1 /* Taget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F7CC592C1BE06000ACECA1 /* Taget.swift */; };
 		82F7CC5C2C1BE2AC00ACECA1 /* PurchaseWish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F7CC5B2C1BE2AC00ACECA1 /* PurchaseWish.swift */; };
+		82F7CC5E2C1BE50200ACECA1 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82F7CC5D2C1BE50200ACECA1 /* Colors.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		82F7CC572C1BDFEF00ACECA1 /* SaleWish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleWish.swift; sourceTree = "<group>"; };
 		82F7CC592C1BE06000ACECA1 /* Taget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Taget.swift; path = ../../../../../../Desktop/Taget.swift; sourceTree = "<group>"; };
 		82F7CC5B2C1BE2AC00ACECA1 /* PurchaseWish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseWish.swift; sourceTree = "<group>"; };
+		82F7CC5D2C1BE50200ACECA1 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				82F7CC492C1BD45200ACECA1 /* Assets.xcassets */,
+				82F7CC5D2C1BE50200ACECA1 /* Colors.xcassets */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -166,6 +169,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82F7CC5E2C1BE50200ACECA1 /* Colors.xcassets in Resources */,
 				82F7CC4D2C1BD45200ACECA1 /* Preview Assets.xcassets in Resources */,
 				82F7CC4A2C1BD45200ACECA1 /* Assets.xcassets in Resources */,
 			);
