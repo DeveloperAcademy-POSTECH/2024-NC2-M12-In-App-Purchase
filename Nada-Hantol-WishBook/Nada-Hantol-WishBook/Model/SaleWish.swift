@@ -11,6 +11,6 @@ struct SaleWish: Identifiable {
     let id: UUID = .init()
     let title: String
     let price: Int
-    let target: Target
+    let target: PersonTarget
     let emoji: String
 }
