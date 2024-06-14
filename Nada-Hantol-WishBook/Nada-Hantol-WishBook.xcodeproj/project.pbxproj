@@ -15,6 +15,7 @@
 		82F7CC5A2C1BE06000ACECA1 /* Taget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F7CC592C1BE06000ACECA1 /* Taget.swift */; };
 		82F7CC5C2C1BE2AC00ACECA1 /* PurchaseWish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F7CC5B2C1BE2AC00ACECA1 /* PurchaseWish.swift */; };
 		82F7CC5E2C1BE50200ACECA1 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82F7CC5D2C1BE50200ACECA1 /* Colors.xcassets */; };
+		82F7CC612C1BE61E00ACECA1 /* Helper+SystemFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F7CC602C1BE61E00ACECA1 /* Helper+SystemFont.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		82F7CC592C1BE06000ACECA1 /* Taget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Taget.swift; path = ../../../../../../Desktop/Taget.swift; sourceTree = "<group>"; };
 		82F7CC5B2C1BE2AC00ACECA1 /* PurchaseWish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseWish.swift; sourceTree = "<group>"; };
 		82F7CC5D2C1BE50200ACECA1 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		82F7CC602C1BE61E00ACECA1 /* Helper+SystemFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Helper+SystemFont.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				82F7CC542C1BDF9100ACECA1 /* App */,
 				82F7CC532C1BDF8C00ACECA1 /* Model */,
 				82F7CC562C1BDFB300ACECA1 /* View */,
+				82F7CC5F2C1BE61000ACECA1 /* Helper */,
 				82F7CC552C1BDFA600ACECA1 /* Resource */,
 				82F7CC4B2C1BD45200ACECA1 /* Preview Content */,
 			);
@@ -109,6 +112,14 @@
 				82F7CC472C1BD45000ACECA1 /* ContentView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		82F7CC5F2C1BE61000ACECA1 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				82F7CC602C1BE61E00ACECA1 /* Helper+SystemFont.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,6 +194,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				82F7CC582C1BDFEF00ACECA1 /* SaleWish.swift in Sources */,
+				82F7CC612C1BE61E00ACECA1 /* Helper+SystemFont.swift in Sources */,
 				82F7CC482C1BD45000ACECA1 /* ContentView.swift in Sources */,
 				82F7CC462C1BD45000ACECA1 /* Nada_Hantol_WishBookApp.swift in Sources */,
 				82F7CC5A2C1BE06000ACECA1 /* Taget.swift in Sources */,
