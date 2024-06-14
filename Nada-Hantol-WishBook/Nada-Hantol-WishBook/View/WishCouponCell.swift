@@ -8,18 +8,24 @@
 import SwiftUI
 
 struct WishCouponCell: View {
+    let saleWish: SaleWish
+    
     var body: some View {
         HStack{
             VStack(alignment: .leading){
-                Text("도서관에서 얼음 떠다주기")
+                Text(saleWish.title)
                     .systemFont(.semiBold, 18)
                     .padding(.bottom, 4)
-                Text("₩150,000")
+                Text("₩\(saleWish.price)")
                     .systemFont(.bold, 17)
                     .padding(.bottom, 8)
                     .foregroundColor(.point)
-                Text("Nada")
-                    .systemFont(.medium, 14)
+                HStack{
+                    Text(saleWish.target.name)
+                        .systemFont(.medium, 14)
+                        .foregroundColor(.detailText)
+                    saleWish.target.image
+                }
                     .padding(.bottom, 15)
                 Button {
                     
@@ -31,22 +37,20 @@ struct WishCouponCell: View {
                         .background(Color(.pointSecondary))
                         .cornerRadius(8)
                 }
-                
                 .foregroundColor(.point)
                 
-                
             }
-            Text("🧊")
+            Spacer()
+            Text(saleWish.emoji)
                 .systemFont(.bold, 77)
                 .offset(y: 22)
         }
         .padding(24)
         .background(Color(.fieldBG))
         .cornerRadius(12)
-        
     }
 }
 
 #Preview {
-    WishCouponCell()
+    WishCouponCell(saleWish: SaleWish(title: "Test title", price: 150000, target: PersonTarget.nada, emoji: "🧊"))
 }
