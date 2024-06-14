@@ -51,9 +51,10 @@
 		82F7CC442C1BD45000ACECA1 /* Nada-Hantol-WishBook */ = {
 			isa = PBXGroup;
 			children = (
-				82F7CC452C1BD45000ACECA1 /* Nada_Hantol_WishBookApp.swift */,
-				82F7CC472C1BD45000ACECA1 /* ContentView.swift */,
-				82F7CC492C1BD45200ACECA1 /* Assets.xcassets */,
+				82F7CC542C1BDF9100ACECA1 /* App */,
+				82F7CC532C1BDF8C00ACECA1 /* Model */,
+				82F7CC562C1BDFB300ACECA1 /* View */,
+				82F7CC552C1BDFA600ACECA1 /* Resource */,
 				82F7CC4B2C1BD45200ACECA1 /* Preview Content */,
 			);
 			path = "Nada-Hantol-WishBook";
@@ -65,6 +66,37 @@
 				82F7CC4C2C1BD45200ACECA1 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		82F7CC532C1BDF8C00ACECA1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		82F7CC542C1BDF9100ACECA1 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				82F7CC452C1BD45000ACECA1 /* Nada_Hantol_WishBookApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		82F7CC552C1BDFA600ACECA1 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				82F7CC492C1BD45200ACECA1 /* Assets.xcassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		82F7CC562C1BDFB300ACECA1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				82F7CC472C1BD45000ACECA1 /* ContentView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
