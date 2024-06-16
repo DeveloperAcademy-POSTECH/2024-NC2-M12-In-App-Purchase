@@ -12,6 +12,15 @@ struct ContentView: View {
         Text("나다와 한톨")
             .systemFont(.bold, 20)
             .foregroundStyle(.point)
+        
+        ActionButton(
+            title: "구매한 쿠폰 확인하기",
+            buttonType: .purchaseCoupon,
+            tapAction: {
+                // TODO: 쿠폰 구매 화면 present
+            }
+        )
+        .padding(.horizontal, 24)
     }
 }
 
