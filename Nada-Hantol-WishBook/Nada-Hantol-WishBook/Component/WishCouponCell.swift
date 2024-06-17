@@ -20,39 +20,51 @@ struct WishCouponCell: View {
     let couponType: CouponType
     
     var body: some View {
-        HStack{
-            VStack(alignment: .leading){
-                Text(saleWish.title)
-                    .systemFont(.semiBold, 18)
-                    .padding(.bottom, 4)
-                Text("₩\(saleWish.price)")
-                    .systemFont(.bold, 17)
-                    .padding(.bottom, 8)
-                    .foregroundColor(.point)
-                HStack{
-                    Text(saleWish.target.name)
-                        .systemFont(.medium, 14)
-                        .foregroundColor(.detailText)
-                    saleWish.target.image
+        ZStack {
+            HStack {
+                VStack(alignment: .leading) {
+                    Text(saleWish.title)
+                        .systemFont(.semiBold, 18)
+                        .padding(.bottom, 4)
+                    
+                    Text("₩\(saleWish.price)")
+                        .systemFont(.bold, 17)
+                        .padding(.bottom, 8)
+                        .foregroundColor(.point)
+                    
+                    HStack {
+                        Text(saleWish.target.name)
+                            .systemFont(.medium, 14)
+                            .foregroundColor(.detailText)
+                        saleWish.target.image
+                    }
+                    .padding(.bottom, 15)
+                    
+                    CouponButtonType()
                 }
-                .padding(.bottom, 15)
                 
-                CouponButtonType()
+                Spacer()
                 
+                Text(saleWish.emoji)
+                    .systemFont(.bold, 77)
+                    .offset(y: 22)
             }
-            Spacer()
-            Text(saleWish.emoji)
-                .systemFont(.bold, 77)
-                .offset(y: 22)
+            .padding(24)
+            .background(Color(.fieldBG))
+            .cornerRadius(12)
+            .opacity(couponType == .used ? 0.2 : 1)
+            
+            if couponType == .used {
+                Image(.stamp)
+                    .resizable()
+                    .frame(width: 100, height: 100)
+            }
         }
-        .padding(24)
-        .background(Color(.fieldBG))
-        .cornerRadius(12)
     }
     
     @ViewBuilder
     private func CouponButtonType () -> some View {
-        HStack {
+        HStack(spacing: 8) {
             switch couponType {
             case .sale:
                 Button {
@@ -66,6 +78,7 @@ struct WishCouponCell: View {
                         .cornerRadius(8)
                 }
                 .foregroundColor(.point)
+                
             case .purchase:
                 Button {
                     
@@ -78,9 +91,11 @@ struct WishCouponCell: View {
                         .cornerRadius(8)
                 }
                 .foregroundColor(.point)
-                Text("구매일: 24.06.13")
+                
+                Text("구매일 24.06.13")
                     .systemFont(.semiBold, 12)
                     .foregroundStyle(.detailText)
+                
             case .refund:
                 Button {
                     
@@ -93,21 +108,25 @@ struct WishCouponCell: View {
                         .cornerRadius(8)
                 }
                 .foregroundColor(.warningText)
-                Text("구매일: 24.06.13")
+                
+                Text("구매일 24.06.13")
                     .systemFont(.semiBold, 12)
                     .foregroundStyle(.detailText)
+                
             case .used:
-                Text("구매일: 24.06.13")
+                Text("구매일 24.06.13")
                     .systemFont(.semiBold, 12)
                     .foregroundStyle(.detailText)
-                Text("|")
-                    .systemFont(.semiBold, 12)
+                
+                Rectangle()
                     .foregroundStyle(.detailText)
-                Text("사용일: 24.06.17")
+                    .frame(width: 2, height: 8)
+                    .clipShape(RoundedRectangle(cornerRadius: 4))
+                
+                Text("사용일 24.06.17")
                     .systemFont(.semiBold, 12)
                     .foregroundStyle(.detailText)
             }
-            
         }
     }
 }
