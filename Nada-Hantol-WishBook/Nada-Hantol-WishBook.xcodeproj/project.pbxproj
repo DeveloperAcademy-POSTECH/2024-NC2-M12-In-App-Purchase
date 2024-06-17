@@ -11,13 +11,10 @@
 		0B7919952C1CD85C0024D53B /* PurchaseWishCouponCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7919942C1CD85C0024D53B /* PurchaseWishCouponCell.swift */; };
 		0BF157F02C1BF12200722B8A /* WishCouponCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF157EF2C1BF12200722B8A /* WishCouponCell.swift */; };
 		827E06402C1FBC460064E4AE /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827E063F2C1FBC460064E4AE /* HomeView.swift */; };
-		827E06422C1FBC690064E4AE /* HomeTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827E06412C1FBC690064E4AE /* HomeTitleView.swift */; };
-		827E06442C1FBC750064E4AE /* HomeCouponListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827E06432C1FBC750064E4AE /* HomeCouponListView.swift */; };
 		8287C08D2C1EB47C000C8C3E /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8287C08C2C1EB47C000C8C3E /* ActionButton.swift */; };
 		8287C08F2C1EBB0C000C8C3E /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8287C08E2C1EBB0C000C8C3E /* IconButton.swift */; };
 		8287C0912C1EBC78000C8C3E /* CouponInfoSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8287C0902C1EBC78000C8C3E /* CouponInfoSheetView.swift */; };
 		82F7CC462C1BD45000ACECA1 /* Nada_Hantol_WishBookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F7CC452C1BD45000ACECA1 /* Nada_Hantol_WishBookApp.swift */; };
-		82F7CC482C1BD45000ACECA1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F7CC472C1BD45000ACECA1 /* ContentView.swift */; };
 		82F7CC4A2C1BD45200ACECA1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82F7CC492C1BD45200ACECA1 /* Assets.xcassets */; };
 		82F7CC4D2C1BD45200ACECA1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82F7CC4C2C1BD45200ACECA1 /* Preview Assets.xcassets */; };
 		82F7CC582C1BDFEF00ACECA1 /* SaleWish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F7CC572C1BDFEF00ACECA1 /* SaleWish.swift */; };
@@ -32,14 +29,11 @@
 		0B7919942C1CD85C0024D53B /* PurchaseWishCouponCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseWishCouponCell.swift; sourceTree = "<group>"; };
 		0BF157EF2C1BF12200722B8A /* WishCouponCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishCouponCell.swift; sourceTree = "<group>"; };
 		827E063F2C1FBC460064E4AE /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		827E06412C1FBC690064E4AE /* HomeTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTitleView.swift; sourceTree = "<group>"; };
-		827E06432C1FBC750064E4AE /* HomeCouponListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCouponListView.swift; sourceTree = "<group>"; };
 		8287C08C2C1EB47C000C8C3E /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		8287C08E2C1EBB0C000C8C3E /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 		8287C0902C1EBC78000C8C3E /* CouponInfoSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponInfoSheetView.swift; sourceTree = "<group>"; };
 		82F7CC422C1BD45000ACECA1 /* Nada-Hantol-WishBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nada-Hantol-WishBook.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		82F7CC452C1BD45000ACECA1 /* Nada_Hantol_WishBookApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nada_Hantol_WishBookApp.swift; sourceTree = "<group>"; };
-		82F7CC472C1BD45000ACECA1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		82F7CC492C1BD45200ACECA1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		82F7CC4C2C1BD45200ACECA1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		82F7CC572C1BDFEF00ACECA1 /* SaleWish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleWish.swift; sourceTree = "<group>"; };
@@ -60,6 +54,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8220C55F2C1FC12900BC9CF2 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				8287C08C2C1EB47C000C8C3E /* ActionButton.swift */,
+				8287C08E2C1EBB0C000C8C3E /* IconButton.swift */,
+				0BF157EF2C1BF12200722B8A /* WishCouponCell.swift */,
+				0B7919942C1CD85C0024D53B /* PurchaseWishCouponCell.swift */,
+				8287C0902C1EBC78000C8C3E /* CouponInfoSheetView.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
 		82F7CC392C1BD45000ACECA1 = {
 			isa = PBXGroup;
 			children = (
@@ -82,6 +88,7 @@
 				82F7CC542C1BDF9100ACECA1 /* App */,
 				82F7CC532C1BDF8C00ACECA1 /* Model */,
 				82F7CC562C1BDFB300ACECA1 /* View */,
+				8220C55F2C1FC12900BC9CF2 /* Component */,
 				82F7CC5F2C1BE61000ACECA1 /* Helper */,
 				82F7CC552C1BDFA600ACECA1 /* Resource */,
 				82F7CC4B2C1BD45200ACECA1 /* Preview Content */,
@@ -128,15 +135,7 @@
 		82F7CC562C1BDFB300ACECA1 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				82F7CC472C1BD45000ACECA1 /* ContentView.swift */,
 				827E063F2C1FBC460064E4AE /* HomeView.swift */,
-				827E06412C1FBC690064E4AE /* HomeTitleView.swift */,
-				827E06432C1FBC750064E4AE /* HomeCouponListView.swift */,
-				8287C08C2C1EB47C000C8C3E /* ActionButton.swift */,
-				8287C08E2C1EBB0C000C8C3E /* IconButton.swift */,
-				8287C0902C1EBC78000C8C3E /* CouponInfoSheetView.swift */,
-				0BF157EF2C1BF12200722B8A /* WishCouponCell.swift */,
-				0B7919942C1CD85C0024D53B /* PurchaseWishCouponCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -224,16 +223,13 @@
 				82F7CC582C1BDFEF00ACECA1 /* SaleWish.swift in Sources */,
 				82F7CC612C1BE61E00ACECA1 /* Helper+SystemFont.swift in Sources */,
 				827E06402C1FBC460064E4AE /* HomeView.swift in Sources */,
-				827E06442C1FBC750064E4AE /* HomeCouponListView.swift in Sources */,
 				82F7CC632C1BEFB200ACECA1 /* PersonTarget.swift in Sources */,
-				82F7CC482C1BD45000ACECA1 /* ContentView.swift in Sources */,
 				0B7919952C1CD85C0024D53B /* PurchaseWishCouponCell.swift in Sources */,
 				82F7CC462C1BD45000ACECA1 /* Nada_Hantol_WishBookApp.swift in Sources */,
 				82F7CC5C2C1BE2AC00ACECA1 /* PurchaseWish.swift in Sources */,
 				8287C0912C1EBC78000C8C3E /* CouponInfoSheetView.swift in Sources */,
 				8287C08D2C1EB47C000C8C3E /* ActionButton.swift in Sources */,
 				0B7919912C1CC9FD0024D53B /* WishData.swift in Sources */,
-				827E06422C1FBC690064E4AE /* HomeTitleView.swift in Sources */,
 				0BF157F02C1BF12200722B8A /* WishCouponCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
