@@ -10,6 +10,9 @@ import SwiftUI
 // MARK: - HomeView
 
 struct HomeView: View {
+    
+    @State private var couponUseCase = CouponUseCase()
+    
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
