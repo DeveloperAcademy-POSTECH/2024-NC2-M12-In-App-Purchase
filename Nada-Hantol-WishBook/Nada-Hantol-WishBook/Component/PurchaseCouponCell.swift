@@ -115,5 +115,6 @@ struct PurchaseCouponCell: View {
                     .foregroundStyle(.detailText)
             }
         }
+        .frame(height: 32)
     }
 }

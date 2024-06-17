@@ -26,7 +26,8 @@ extension DataService {
     func fetchCoupons() -> [PurchaseCoupon] {
         do {
             let fetchDescriptor = FetchDescriptor<PurchaseCoupon>(sortBy: [.init(\.purchaseDate)])
-            return try modelContext.fetch(fetchDescriptor)
+            let coupons = try modelContext.fetch(fetchDescriptor)
+            return coupons.reversed()
         } catch {
             print("PurchaseCoupon 데이터 반환 실패")
             return []
