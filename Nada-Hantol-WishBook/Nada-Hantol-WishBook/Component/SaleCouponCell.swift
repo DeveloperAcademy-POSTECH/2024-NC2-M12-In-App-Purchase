@@ -27,10 +27,11 @@ struct SaleCouponCell: View {
                         .padding(.bottom, 8)
                         .foregroundColor(.point)
                     
-                    HStack {
+                    HStack(spacing: 4) {
                         Text(saleCoupon.target.name)
                             .systemFont(.medium, 14)
                             .foregroundColor(.detailText)
+                        
                         saleCoupon.target.image
                     }
                     .padding(.bottom, 15)

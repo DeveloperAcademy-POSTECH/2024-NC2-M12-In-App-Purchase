@@ -24,6 +24,7 @@ struct RefundCouponView: View {
                 
                 Spacer()
             }
+            .padding(.horizontal, 22)
             
             ScrollView {
                 VStack(spacing: 16) {
@@ -34,11 +35,11 @@ struct RefundCouponView: View {
                         ) {
                             // TODO: 환불 로직
                         }
+                        .padding(.horizontal, 22)
                     }
                 }
             }
         }
-        .padding(.horizontal, 22)
     }
 }
 

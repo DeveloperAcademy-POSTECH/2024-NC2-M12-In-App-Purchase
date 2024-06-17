@@ -32,10 +32,11 @@ struct PurchaseCouponCell: View {
                         .padding(.bottom, 8)
                         .foregroundColor(.point)
                     
-                    HStack {
+                    HStack(spacing: 4) {
                         Text(purchaseCoupon.target.name)
                             .systemFont(.medium, 14)
                             .foregroundColor(.detailText)
+                        
                         purchaseCoupon.target.image
                     }
                     .padding(.bottom, 15)
@@ -55,9 +56,14 @@ struct PurchaseCouponCell: View {
             .opacity(couponType == .used ? 0.2 : 1)
             
             if couponType == .used {
-                Image(.stamp)
-                    .resizable()
-                    .frame(width: 100, height: 100)
+                HStack {
+                    Spacer()
+                    
+                    Image(.stamp)
+                        .resizable()
+                        .frame(width: 100, height: 100)
+                }
+                .padding(.horizontal, 48)
             }
         }
     }

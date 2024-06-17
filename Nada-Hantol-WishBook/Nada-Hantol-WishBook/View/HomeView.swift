@@ -20,8 +20,8 @@ struct HomeView: View {
                 HomeTitleView()
                 
                 Rectangle()
-                    .frame(height: 12)
-                    .foregroundStyle(Color(red: 238/255, green: 238/255, blue: 238/255))
+                    .frame(height: 8)
+                    .foregroundStyle(.defaultBG)
                 
                 HomeCouponListView()
             }
@@ -38,7 +38,7 @@ private struct HomeTitleView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            HStack{
+            HStack {
                 Text("나다와 한톨의 소원북")
                     .systemFont(.bold, 24)
                 
@@ -50,11 +50,11 @@ private struct HomeTitleView: View {
                     }
                 )
             }
-            .padding(.bottom, 11)
             .padding(.top, 4)
+            .padding(.bottom, 12)
             
             Text("소정의 비용으로 나다와 한톨이 소원을 들어드립니다!")
-                .systemFont(.medium, 14)
+                .systemFont(.bold, 14)
                 .foregroundStyle(Color(.detailText))
                 .padding(.bottom, 10)
         }
