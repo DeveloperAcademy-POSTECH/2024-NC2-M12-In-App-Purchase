@@ -13,6 +13,9 @@ struct HomeCouponListView: View {
     
     var body: some View {
         VStack {
+            Spacer()
+                .frame(height: 32)
+            
             HStack {
                 Text("소원 쿠폰 구매")
                     .systemFont(.bold, 24)

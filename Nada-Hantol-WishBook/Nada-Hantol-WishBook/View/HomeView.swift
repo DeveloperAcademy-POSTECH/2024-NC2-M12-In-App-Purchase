@@ -9,8 +9,13 @@ import SwiftUI
 
 struct HomeView: View {
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             HomeTitleView()
+            
+            Rectangle()
+                .frame(height: 12)
+                .foregroundStyle(Color(red: 238/255, green: 238/255, blue: 238/255))
+            
             HomeCouponListView()
         }
     }

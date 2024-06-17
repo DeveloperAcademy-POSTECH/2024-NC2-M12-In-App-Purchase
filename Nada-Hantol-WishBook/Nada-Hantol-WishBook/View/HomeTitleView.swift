@@ -16,7 +16,7 @@ struct HomeTitleView: View {
                     
                 Spacer()
                 IconButton(
-                    buttonType: .info,
+                    buttonType: .profile,
                     tapAction: {
                         print("프로필 버튼 탭!")
                     }
