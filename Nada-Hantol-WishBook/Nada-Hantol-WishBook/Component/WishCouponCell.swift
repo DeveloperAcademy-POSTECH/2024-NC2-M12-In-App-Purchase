@@ -35,7 +35,7 @@ struct WishCouponCell: View {
                         .foregroundColor(.detailText)
                     saleWish.target.image
                 }
-                    .padding(.bottom, 15)
+                .padding(.bottom, 15)
                 
                 CouponButtonType()
                 
