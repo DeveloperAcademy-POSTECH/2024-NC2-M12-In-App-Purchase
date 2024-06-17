@@ -31,7 +31,7 @@ final class PurchaseCoupon: Identifiable {
     }
 }
 
-// MARK: - 확장
+// MARK: - Extension
 
 extension PurchaseCoupon {
     
@@ -57,5 +57,14 @@ extension PurchaseCoupon {
     var target: PersonTarget {
         let coupon = saleCoupons.filter { $0.id == self.couponId }.first
         return coupon?.target ?? .all
+    }
+}
+
+extension [PurchaseCoupon] {
+    
+    /// 현재까지 구매한 쿠폰의 총 금액을 반환합니다.
+    var totalPrice: Int {
+        let total = self.reduce(0) { $0 + $1.price }
+        return total
     }
 }

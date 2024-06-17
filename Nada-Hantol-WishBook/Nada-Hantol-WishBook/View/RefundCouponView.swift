@@ -24,7 +24,7 @@ struct RefundCouponView: View {
                 
                 Spacer()
             }
-            .padding(.horizontal, 22)
+            .padding(.horizontal, 26)
             
             ScrollView {
                 VStack(spacing: 16) {
