@@ -9,7 +9,22 @@ import SwiftUI
 
 struct RefundView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        VStack(alignment: .leading){
+            Spacer()
+                .frame(height: 28)
+            Text("쿠폰 환불")
+                .systemFont(.bold, 24)
+                
+            ScrollView {
+                VStack(spacing: 16) {
+                    ForEach(saleWishes) { wish in
+                        WishCouponCell(saleWish: wish, couponType: .refund)
+                    }
+                }
+            }
+        }
+        .padding(.horizontal, 22)
     }
 }
 
