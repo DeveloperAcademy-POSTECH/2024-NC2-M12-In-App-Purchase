@@ -97,7 +97,7 @@ struct HomeCouponListView: View {
             ScrollView {
                 VStack(spacing: 16) {
                     ForEach(saleWishes) { wish in
-                        WishCouponCell(saleWish: wish)
+                        WishCouponCell(saleWish: wish, couponType: .sale)
                             .padding(.horizontal, 24)
                     }
                 }
