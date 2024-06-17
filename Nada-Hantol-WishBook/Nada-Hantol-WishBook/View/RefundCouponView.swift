@@ -1,5 +1,5 @@
 //
-//  RefundView.swift
+//  RefundCouponView.swift
 //  Nada-Hantol-WishBook
 //
 //  Created by 김민준 on 6/17/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct RefundView: View {
+struct RefundCouponView: View {
     
     @Environment(CouponUseCase.self) private var couponUseCase
     
@@ -27,7 +27,7 @@ struct RefundView: View {
             
             ScrollView {
                 VStack(spacing: 16) {
-                    ForEach(couponUseCase.purchaseCoupons) { coupon in
+                    ForEach(couponUseCase.refundCoupons) { coupon in
                         PurchaseCouponCell(
                             purchaseCoupon: coupon,
                             couponType: .refund
@@ -43,7 +43,7 @@ struct RefundView: View {
 }
 
 #Preview {
-    RefundView()
+    RefundCouponView()
         .environment(
             CouponUseCase(
                 storeService: .init(),

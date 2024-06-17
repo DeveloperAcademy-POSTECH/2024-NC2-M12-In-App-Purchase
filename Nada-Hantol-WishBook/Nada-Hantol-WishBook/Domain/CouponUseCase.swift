@@ -24,6 +24,11 @@ final class CouponUseCase {
 
 extension CouponUseCase {
     
+    /// 환불 가능한 쿠폰 리스트를 반환합니다.
+    var refundCoupons: [PurchaseCoupon] {
+        return purchaseCoupons.filter { !$0.isUsed }
+    }
+    
     /// 쿠폰을 구매합니다.
     func purchaseCoupon(id: Int) {
         

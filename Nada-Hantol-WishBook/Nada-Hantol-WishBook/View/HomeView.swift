@@ -60,7 +60,7 @@ private struct HomeTitleView: View {
         }
         .padding(22)
         .navigationDestination(isPresented: $isRefundViewPresented) {
-            RefundView()
+            RefundCouponView()
                 .navigationTitle("내 정보")
                 .navigationBarTitleDisplayMode(.large)
         }
