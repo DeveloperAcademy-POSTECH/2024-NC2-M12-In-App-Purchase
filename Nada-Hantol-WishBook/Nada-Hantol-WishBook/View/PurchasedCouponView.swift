@@ -36,7 +36,7 @@ struct PurchasedCouponView: View {
                 VStack(spacing: 16) {
                     ForEach(couponUseCase.purchaseCoupons) { coupon in
                         PurchaseCouponCell(
-                            purchaseWish: coupon,
+                            purchaseCoupon: coupon,
                             couponType: .purchase
                         )
                         .padding(.horizontal, 24)

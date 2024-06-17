@@ -37,13 +37,7 @@ extension PurchaseCoupon {
     
     /// 쿠폰의 ID를 가지고 쿠폰 제목을 조회합니다.
     var title: String {
-        let coupon = saleCoupons.filter {
-            if $0.id == self.couponId {
-                print("saleCoupons ID: \($0.id)")
-                print("self.couponID: \(self.couponId)")
-            }
-            return $0.id == self.couponId
-        }.first
+        let coupon = saleCoupons.filter { return $0.id == self.couponId }.first
         return coupon?.title ?? "이 쿠폰은 잘못된 쿠폰이야"
     }
     

@@ -15,27 +15,27 @@ struct PurchaseCouponCell: View {
         case used
     }
     
-    let purchaseWish: PurchaseCoupon
+    let purchaseCoupon: PurchaseCoupon
     let couponType: CouponType
     
     var body: some View {
         ZStack {
             HStack {
                 VStack(alignment: .leading) {
-                    Text(purchaseWish.title)
+                    Text(purchaseCoupon.title)
                         .systemFont(.semiBold, 18)
                         .padding(.bottom, 4)
                     
-                    Text("₩\(purchaseWish.price)")
+                    Text("₩\(purchaseCoupon.price)")
                         .systemFont(.bold, 17)
                         .padding(.bottom, 8)
                         .foregroundColor(.point)
                     
                     HStack {
-                        Text(purchaseWish.target.name)
+                        Text(purchaseCoupon.target.name)
                             .systemFont(.medium, 14)
                             .foregroundColor(.detailText)
-                        purchaseWish.target.image
+                        purchaseCoupon.target.image
                     }
                     .padding(.bottom, 15)
                     
@@ -44,7 +44,7 @@ struct PurchaseCouponCell: View {
                 
                 Spacer()
                 
-                Text(purchaseWish.emoji)
+                Text(purchaseCoupon.emoji)
                     .systemFont(.bold, 77)
                     .offset(y: 22)
             }
@@ -65,19 +65,6 @@ struct PurchaseCouponCell: View {
     private func CouponButtonType () -> some View {
         HStack(spacing: 8) {
             switch couponType {
-//            case .sale:
-//                Button {
-//                    
-//                } label: {
-//                    Text("구매하기")
-//                        .systemFont(.bold, 14)
-//                        .padding(.horizontal, 12)
-//                        .padding(.vertical, 6)
-//                        .background(Color(.pointSecondary))
-//                        .cornerRadius(8)
-//                }
-//                .foregroundColor(.point)
-                
             case .purchase:
                 Button {
                     
@@ -91,7 +78,7 @@ struct PurchaseCouponCell: View {
                 }
                 .foregroundColor(.point)
                 
-                Text("구매일 24.06.13")
+                Text("구매일 \(purchaseCoupon.purchaseDate.yearMonthDay)")
                     .systemFont(.semiBold, 12)
                     .foregroundStyle(.detailText)
                 
@@ -108,12 +95,12 @@ struct PurchaseCouponCell: View {
                 }
                 .foregroundColor(.warningText)
                 
-                Text("구매일 24.06.13")
+                Text("구매일 \(purchaseCoupon.purchaseDate.yearMonthDay)")
                     .systemFont(.semiBold, 12)
                     .foregroundStyle(.detailText)
                 
             case .used:
-                Text("구매일 24.06.13")
+                Text("구매일 \(purchaseCoupon.purchaseDate.yearMonthDay)")
                     .systemFont(.semiBold, 12)
                     .foregroundStyle(.detailText)
                 
@@ -122,7 +109,7 @@ struct PurchaseCouponCell: View {
                     .frame(width: 2, height: 8)
                     .clipShape(RoundedRectangle(cornerRadius: 4))
                 
-                Text("사용일 24.06.17")
+                Text("사용일 \(purchaseCoupon.usedDate?.yearMonthDay ?? "ERROR")")
                     .systemFont(.semiBold, 12)
                     .foregroundStyle(.detailText)
             }

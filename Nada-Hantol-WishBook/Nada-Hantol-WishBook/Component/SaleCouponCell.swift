@@ -59,15 +59,3 @@ struct SaleCouponCell: View {
         }
     }
 }
-
-#Preview {
-    SaleCouponCell(
-        saleCoupon: .init(
-            id: 0,
-            title: "테스트",
-            price: 1213123,
-            target: .all,
-            emoji: "ㅁㄴㅇ"
-        )
-    )
-}
