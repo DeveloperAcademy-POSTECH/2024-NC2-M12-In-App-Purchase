@@ -14,6 +14,9 @@ struct PurchasedCouponView: View {
     @Environment(CouponUseCase.self) private var couponUseCase
     
     @State private var isCouponUseAlertPresented = false
+    @State private var isCompleteAlertPresented = false
+    
+    @State private var selectedCoupon: PurchaseCoupon?
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -37,29 +40,33 @@ struct PurchasedCouponView: View {
                     ForEach(couponUseCase.purchaseCoupons) { coupon in
                         PurchaseCouponCell(
                             purchaseCoupon: coupon,
-                            couponType: .purchase
-                        )
-                        .padding(.horizontal, 24)
-                        .onTapGesture {
+                            couponType: coupon.isUsed ? .used : .purchase
+                        ) {
+                            selectedCoupon = coupon
                             isCouponUseAlertPresented.toggle()
                         }
+                        .padding(.horizontal, 24)
                     }
                 }
             }
-        }
-        .alert(
-            "쿠폰을 사용하시겠습니까?",
-            isPresented: $isCouponUseAlertPresented,
-            actions: {
-                Button("그만두기", role: .none) {}
-                Button("사용하기", role: .none) {
-                    // TODO: 선택된 쿠폰 사용 완료 상태로 전환
+            .alert(
+                "\(selectedCoupon?.title ?? "ERROR") 쿠폰을 사용하시겠습니까?",
+                isPresented: $isCouponUseAlertPresented,
+                actions: {
+                    Button("그만두기", role: .none) {}
+                    Button("사용하기", role: .none) {
+                        couponUseCase.useCoupon(selectedCoupon)
+                        isCompleteAlertPresented.toggle()
+                    }
+                },
+                message: {
+                    Text("사용이 완료된 쿠폰은 재사용할 수 없습니다.")
                 }
-            },
-            message: {
-                Text("사용이 완료된 쿠폰은 재사용할 수 없습니다.")
+            )
+            .alert("쿠폰 사용이 완료되었습니다!", isPresented: $isCompleteAlertPresented) {
+                Button("확인", role: .none) {}
             }
-        )
+        }
     }
 }
 

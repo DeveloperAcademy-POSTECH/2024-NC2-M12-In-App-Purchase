@@ -17,6 +17,7 @@ struct PurchaseCouponCell: View {
     
     let purchaseCoupon: PurchaseCoupon
     let couponType: CouponType
+    let buttonTap: () -> Void
     
     var body: some View {
         ZStack {
@@ -67,7 +68,7 @@ struct PurchaseCouponCell: View {
             switch couponType {
             case .purchase:
                 Button {
-                    
+                    buttonTap()
                 } label: {
                     Text("사용하기")
                         .systemFont(.bold, 14)
@@ -84,7 +85,7 @@ struct PurchaseCouponCell: View {
                 
             case .refund:
                 Button {
-                    
+                    buttonTap()
                 } label: {
                     Text("환불하기")
                         .systemFont(.bold, 14)

@@ -31,7 +31,9 @@ struct RefundView: View {
                         PurchaseCouponCell(
                             purchaseCoupon: coupon,
                             couponType: .refund
-                        )
+                        ) {
+                            // TODO: 환불 로직
+                        }
                     }
                 }
             }

@@ -115,12 +115,10 @@ struct HomeCouponListView: View {
             ScrollView {
                 VStack(spacing: 16) {
                     ForEach(saleCoupons) { coupon in
-                        SaleCouponCell(saleCoupon: coupon)
-                            .padding(.horizontal, 24)
-                            .onTapGesture {
-                                print("\(coupon.title) 쿠폰 구매")
-                                couponUseCase.purchaseCoupon(id: coupon.id)
-                            }
+                        SaleCouponCell(saleCoupon: coupon) {
+                            couponUseCase.purchaseCoupon(id: coupon.id)
+                        }
+                        .padding(.horizontal, 24)
                     }
                 }
             }

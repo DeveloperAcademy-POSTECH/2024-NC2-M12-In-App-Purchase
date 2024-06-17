@@ -40,12 +40,19 @@ extension CouponUseCase {
     }
     
     /// 쿠폰을 사용합니다.
-    func useCoupon() {
+    func useCoupon(_ coupon: PurchaseCoupon?) {
         
         // 1. 현재 쿠폰의 상태값을 purchase -> used
-        dataService.updateCouponState()
+        guard let coupon = coupon else {
+            print("선택된 쿠폰이 없습니다.")
+            return
+        }
+        
+        dataService.updateCouponState(coupon)
         
         // 2. 현재 쿠폰의 사용일자를 업데이트 -> 현재 시간으로
+        
+        purchaseCoupons = dataService.fetchCoupons()
     }
     
     /// 쿠폰을 환불합니다.

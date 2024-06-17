@@ -12,6 +12,7 @@ import SwiftUI
 struct SaleCouponCell: View {
     
     let saleCoupon: SaleCoupon
+    let purchaseButtonTap: () -> Void
     
     var body: some View {
         ZStack {
@@ -35,7 +36,7 @@ struct SaleCouponCell: View {
                     .padding(.bottom, 15)
                     
                     Button {
-
+                        purchaseButtonTap()
                     } label: {
                         Text("구매하기")
                             .systemFont(.bold, 14)

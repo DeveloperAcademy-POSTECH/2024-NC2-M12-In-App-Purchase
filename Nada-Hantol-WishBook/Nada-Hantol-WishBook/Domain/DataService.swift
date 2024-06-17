@@ -40,8 +40,9 @@ extension DataService {
     }
     
     /// 쿠폰 상태를 변경합니다.
-    func updateCouponState() {
-        
+    func updateCouponState(_ coupon: PurchaseCoupon) {
+        coupon.isUsed = true
+        coupon.usedDate = .now
     }
     
     /// 쿠폰을 삭제합니다.
