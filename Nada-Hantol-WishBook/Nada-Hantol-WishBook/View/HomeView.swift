@@ -11,14 +11,16 @@ import SwiftUI
 
 struct HomeView: View {
     var body: some View {
-        VStack(spacing: 0) {
-            HomeTitleView()
-            
-            Rectangle()
-                .frame(height: 12)
-                .foregroundStyle(Color(red: 238/255, green: 238/255, blue: 238/255))
-            
-            HomeCouponListView()
+        NavigationStack {
+            VStack(spacing: 0) {
+                HomeTitleView()
+                
+                Rectangle()
+                    .frame(height: 12)
+                    .foregroundStyle(Color(red: 238/255, green: 238/255, blue: 238/255))
+                
+                HomeCouponListView()
+            }
         }
     }
 }
@@ -26,8 +28,11 @@ struct HomeView: View {
 // MARK: - HomeTitleView
 
 private struct HomeTitleView: View {
+    
+    @State private var isRefundViewPresented = false
+    
     var body: some View {
-        VStack(alignment: .leading){
+        VStack(alignment: .leading) {
             HStack{
                 Text("나다와 한톨의 소원북")
                     .systemFont(.bold, 24)
@@ -36,7 +41,7 @@ private struct HomeTitleView: View {
                 IconButton(
                     buttonType: .profile,
                     tapAction: {
-                        print("프로필 버튼 탭!")
+                        isRefundViewPresented.toggle()
                     }
                 )
             }
@@ -49,6 +54,9 @@ private struct HomeTitleView: View {
                 .padding(.bottom, 10)
         }
         .padding(22)
+        .navigationDestination(isPresented: $isRefundViewPresented) {
+            RefundView()
+        }
     }
 }
 
@@ -56,7 +64,8 @@ private struct HomeTitleView: View {
 
 struct HomeCouponListView: View {
     
-    @State private var infoSheetPresented = false
+    @State private var isInfoSheetPresented = false
+    @State private var isPurchasedCouponViewPresented = false
     
     var body: some View {
         VStack {
@@ -73,7 +82,7 @@ struct HomeCouponListView: View {
                 IconButton(
                     buttonType: .info,
                     tapAction: {
-                        infoSheetPresented.toggle()
+                        isInfoSheetPresented.toggle()
                     }
                 )
             }
@@ -86,7 +95,7 @@ struct HomeCouponListView: View {
                 title: "구매한 쿠폰 확인하기",
                 buttonType: .purchaseCoupon,
                 tapAction: {
-                    // TODO: 내 쿠폰 확인하기 화면 이동
+                    isPurchasedCouponViewPresented.toggle()
                 }
             )
             .padding(.horizontal, 24)
@@ -103,9 +112,13 @@ struct HomeCouponListView: View {
                 }
             }
         }
-        .sheet(isPresented: $infoSheetPresented) {
+        .sheet(isPresented: $isInfoSheetPresented) {
             CouponInfoSheetView()
                 .presentationDetents([.height(240)])
+                .presentationDragIndicator(.visible)
+        }
+        .sheet(isPresented: $isPurchasedCouponViewPresented) {
+            PurchasedCouponView()
                 .presentationDragIndicator(.visible)
         }
     }
