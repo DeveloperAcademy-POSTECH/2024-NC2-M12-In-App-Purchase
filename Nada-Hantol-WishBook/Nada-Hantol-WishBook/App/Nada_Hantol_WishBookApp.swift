@@ -6,12 +6,22 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct Nada_Hantol_WishBookApp: App {
+    
+    private let modelContainer = ModelContainerCoordinator.mainContainer
+    
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            HomeView(
+                couponUseCase: CouponUseCase(
+                    storeService: StoreService(),
+                    dataService: DataService(modelContext: modelContainer.mainContext)
+                )
+            )
         }
+        .modelContainer(modelContainer)
     }
 }

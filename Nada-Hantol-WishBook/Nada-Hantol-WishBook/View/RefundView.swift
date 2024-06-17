@@ -15,10 +15,10 @@ struct RefundView: View {
                 .frame(height: 28)
             Text("쿠폰 환불")
                 .systemFont(.bold, 24)
-                
+            
             ScrollView {
                 VStack(spacing: 16) {
-                    ForEach(saleWishes) { wish in
+                    ForEach(saleCoupons) { wish in
                         WishCouponCell(saleWish: wish, couponType: .refund)
                     }
                 }

@@ -6,9 +6,16 @@
 //
 
 import Foundation
+import SwiftData
 
 struct DataService {
     
+    /// ModelContext
+    private let modelContext: ModelContext
+    
+    init(modelContext: ModelContext) {
+        self.modelContext = modelContext
+    }
 }
 
 // MARK: - 실제 사용 케이스
@@ -17,7 +24,8 @@ extension DataService {
     
     /// 쿠폰을 생성합니다.
     func createCoupon() {
-        
+//        let newCoupon = PurchaseCoupon(couponId: <#T##UUID#>)
+//        modelContext.insert(newCoupon)
     }
     
     /// 쿠폰 상태를 변경합니다.

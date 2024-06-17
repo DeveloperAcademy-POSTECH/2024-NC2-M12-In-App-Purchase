@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0B7919912C1CC9FD0024D53B /* WishData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7919902C1CC9FD0024D53B /* WishData.swift */; };
+		0B7919912C1CC9FD0024D53B /* SaleCouponDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7919902C1CC9FD0024D53B /* SaleCouponDummy.swift */; };
 		0BF157F02C1BF12200722B8A /* WishCouponCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF157EF2C1BF12200722B8A /* WishCouponCell.swift */; };
 		8220C5612C1FC5AE00BC9CF2 /* PurchasedCouponView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8220C5602C1FC5AE00BC9CF2 /* PurchasedCouponView.swift */; };
 		8220C5632C1FC5BF00BC9CF2 /* RefundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8220C5622C1FC5BF00BC9CF2 /* RefundView.swift */; };
@@ -18,18 +18,19 @@
 		82C078CF2C1FD5B400D4E6AF /* CouponUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C078CE2C1FD5B400D4E6AF /* CouponUseCase.swift */; };
 		82C078D22C1FD86E00D4E6AF /* StoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C078D12C1FD86E00D4E6AF /* StoreService.swift */; };
 		82C078D42C1FD87300D4E6AF /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C078D32C1FD87300D4E6AF /* DataService.swift */; };
+		82C078D92C1FE12C00D4E6AF /* ModelContainerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C078D82C1FE12C00D4E6AF /* ModelContainerCoordinator.swift */; };
 		82F7CC462C1BD45000ACECA1 /* Nada_Hantol_WishBookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F7CC452C1BD45000ACECA1 /* Nada_Hantol_WishBookApp.swift */; };
 		82F7CC4A2C1BD45200ACECA1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82F7CC492C1BD45200ACECA1 /* Assets.xcassets */; };
 		82F7CC4D2C1BD45200ACECA1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82F7CC4C2C1BD45200ACECA1 /* Preview Assets.xcassets */; };
-		82F7CC582C1BDFEF00ACECA1 /* SaleWish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F7CC572C1BDFEF00ACECA1 /* SaleWish.swift */; };
-		82F7CC5C2C1BE2AC00ACECA1 /* PurchaseWish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F7CC5B2C1BE2AC00ACECA1 /* PurchaseWish.swift */; };
+		82F7CC582C1BDFEF00ACECA1 /* SaleCoupon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F7CC572C1BDFEF00ACECA1 /* SaleCoupon.swift */; };
+		82F7CC5C2C1BE2AC00ACECA1 /* PurchaseCoupon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F7CC5B2C1BE2AC00ACECA1 /* PurchaseCoupon.swift */; };
 		82F7CC5E2C1BE50200ACECA1 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82F7CC5D2C1BE50200ACECA1 /* Colors.xcassets */; };
 		82F7CC612C1BE61E00ACECA1 /* Helper+SystemFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F7CC602C1BE61E00ACECA1 /* Helper+SystemFont.swift */; };
 		82F7CC632C1BEFB200ACECA1 /* PersonTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F7CC622C1BEFB200ACECA1 /* PersonTarget.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0B7919902C1CC9FD0024D53B /* WishData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishData.swift; sourceTree = "<group>"; };
+		0B7919902C1CC9FD0024D53B /* SaleCouponDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleCouponDummy.swift; sourceTree = "<group>"; };
 		0BF157EF2C1BF12200722B8A /* WishCouponCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishCouponCell.swift; sourceTree = "<group>"; };
 		8220C5602C1FC5AE00BC9CF2 /* PurchasedCouponView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasedCouponView.swift; sourceTree = "<group>"; };
 		8220C5622C1FC5BF00BC9CF2 /* RefundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefundView.swift; sourceTree = "<group>"; };
@@ -40,12 +41,13 @@
 		82C078CE2C1FD5B400D4E6AF /* CouponUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponUseCase.swift; sourceTree = "<group>"; };
 		82C078D12C1FD86E00D4E6AF /* StoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreService.swift; sourceTree = "<group>"; };
 		82C078D32C1FD87300D4E6AF /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		82C078D82C1FE12C00D4E6AF /* ModelContainerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelContainerCoordinator.swift; sourceTree = "<group>"; };
 		82F7CC422C1BD45000ACECA1 /* Nada-Hantol-WishBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nada-Hantol-WishBook.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		82F7CC452C1BD45000ACECA1 /* Nada_Hantol_WishBookApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nada_Hantol_WishBookApp.swift; sourceTree = "<group>"; };
 		82F7CC492C1BD45200ACECA1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		82F7CC4C2C1BD45200ACECA1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		82F7CC572C1BDFEF00ACECA1 /* SaleWish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleWish.swift; sourceTree = "<group>"; };
-		82F7CC5B2C1BE2AC00ACECA1 /* PurchaseWish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseWish.swift; sourceTree = "<group>"; };
+		82F7CC572C1BDFEF00ACECA1 /* SaleCoupon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleCoupon.swift; sourceTree = "<group>"; };
+		82F7CC5B2C1BE2AC00ACECA1 /* PurchaseCoupon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseCoupon.swift; sourceTree = "<group>"; };
 		82F7CC5D2C1BE50200ACECA1 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		82F7CC602C1BE61E00ACECA1 /* Helper+SystemFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Helper+SystemFont.swift"; sourceTree = "<group>"; };
 		82F7CC622C1BEFB200ACECA1 /* PersonTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTarget.swift; sourceTree = "<group>"; };
@@ -83,6 +85,14 @@
 			path = Domain;
 			sourceTree = "<group>";
 		};
+		82C078D72C1FE11100D4E6AF /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				82C078D82C1FE12C00D4E6AF /* ModelContainerCoordinator.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		82F7CC392C1BD45000ACECA1 = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +114,7 @@
 			children = (
 				82F7CC542C1BDF9100ACECA1 /* App */,
 				82F7CC532C1BDF8C00ACECA1 /* Model */,
+				82C078D72C1FE11100D4E6AF /* Data */,
 				82C078D02C1FD5B800D4E6AF /* Domain */,
 				82F7CC562C1BDFB300ACECA1 /* View */,
 				8220C55F2C1FC12900BC9CF2 /* Component */,
@@ -125,9 +136,9 @@
 		82F7CC532C1BDF8C00ACECA1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				82F7CC572C1BDFEF00ACECA1 /* SaleWish.swift */,
-				0B7919902C1CC9FD0024D53B /* WishData.swift */,
-				82F7CC5B2C1BE2AC00ACECA1 /* PurchaseWish.swift */,
+				82F7CC572C1BDFEF00ACECA1 /* SaleCoupon.swift */,
+				0B7919902C1CC9FD0024D53B /* SaleCouponDummy.swift */,
+				82F7CC5B2C1BE2AC00ACECA1 /* PurchaseCoupon.swift */,
 				82F7CC622C1BEFB200ACECA1 /* PersonTarget.swift */,
 			);
 			path = Model;
@@ -241,7 +252,8 @@
 			files = (
 				8287C08F2C1EBB0C000C8C3E /* IconButton.swift in Sources */,
 				8220C5632C1FC5BF00BC9CF2 /* RefundView.swift in Sources */,
-				82F7CC582C1BDFEF00ACECA1 /* SaleWish.swift in Sources */,
+				82C078D92C1FE12C00D4E6AF /* ModelContainerCoordinator.swift in Sources */,
+				82F7CC582C1BDFEF00ACECA1 /* SaleCoupon.swift in Sources */,
 				8220C5612C1FC5AE00BC9CF2 /* PurchasedCouponView.swift in Sources */,
 				82F7CC612C1BE61E00ACECA1 /* Helper+SystemFont.swift in Sources */,
 				82C078CF2C1FD5B400D4E6AF /* CouponUseCase.swift in Sources */,
@@ -249,10 +261,10 @@
 				82C078D42C1FD87300D4E6AF /* DataService.swift in Sources */,
 				82F7CC632C1BEFB200ACECA1 /* PersonTarget.swift in Sources */,
 				82F7CC462C1BD45000ACECA1 /* Nada_Hantol_WishBookApp.swift in Sources */,
-				82F7CC5C2C1BE2AC00ACECA1 /* PurchaseWish.swift in Sources */,
+				82F7CC5C2C1BE2AC00ACECA1 /* PurchaseCoupon.swift in Sources */,
 				8287C0912C1EBC78000C8C3E /* CouponInfoSheetView.swift in Sources */,
 				8287C08D2C1EB47C000C8C3E /* ActionButton.swift in Sources */,
-				0B7919912C1CC9FD0024D53B /* WishData.swift in Sources */,
+				0B7919912C1CC9FD0024D53B /* SaleCouponDummy.swift in Sources */,
 				0BF157F02C1BF12200722B8A /* WishCouponCell.swift in Sources */,
 				82C078D22C1FD86E00D4E6AF /* StoreService.swift in Sources */,
 			);
@@ -396,7 +408,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -426,7 +438,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

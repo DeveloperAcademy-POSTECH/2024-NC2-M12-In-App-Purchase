@@ -6,12 +6,13 @@
 //
 
 import SwiftUI
+import SwiftData
 
 // MARK: - HomeView
 
 struct HomeView: View {
     
-    @State private var couponUseCase = CouponUseCase()
+    @State private(set) var couponUseCase: CouponUseCase
     
     var body: some View {
         NavigationStack {
@@ -112,7 +113,7 @@ struct HomeCouponListView: View {
             
             ScrollView {
                 VStack(spacing: 16) {
-                    ForEach(saleWishes) { wish in
+                    ForEach(saleCoupons) { wish in
                         WishCouponCell(saleWish: wish, couponType: .sale)
                             .padding(.horizontal, 24)
                     }
@@ -132,5 +133,10 @@ struct HomeCouponListView: View {
 }
 
 #Preview {
-    HomeView()
+    HomeView(
+        couponUseCase: CouponUseCase(
+            storeService: StoreService(),
+            dataService: DataService(modelContext: ModelContainerCoordinator.mockContainer.mainContext)
+        )
+    )
 }

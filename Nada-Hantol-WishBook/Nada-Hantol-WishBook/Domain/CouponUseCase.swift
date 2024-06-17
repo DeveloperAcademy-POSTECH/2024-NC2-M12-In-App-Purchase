@@ -12,7 +12,7 @@ final class CouponUseCase {
     let storeService: StoreService
     let dataService: DataService
     
-    init(storeService: StoreService = .init(), dataService: DataService = .init()) {
+    init(storeService: StoreService, dataService: DataService) {
         self.storeService = storeService
         self.dataService = dataService
     }

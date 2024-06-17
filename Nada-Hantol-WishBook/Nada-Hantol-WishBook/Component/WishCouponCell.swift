@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct WishCouponCell: View {
-    let saleWish: SaleWish
+    let saleWish: SaleCoupon
     
     enum CouponType {
         case sale
@@ -134,7 +134,7 @@ struct WishCouponCell: View {
 #Preview {
     VStack{
         WishCouponCell(
-            saleWish: SaleWish(
+            saleWish: SaleCoupon(
                 title: "Test title",
                 price: 150000,
                 target: PersonTarget.nada,
@@ -142,7 +142,7 @@ struct WishCouponCell: View {
             ), couponType: .sale
         )
         WishCouponCell(
-            saleWish: SaleWish(
+            saleWish: SaleCoupon(
                 title: "Test title",
                 price: 150000,
                 target: PersonTarget.nada,
@@ -150,7 +150,7 @@ struct WishCouponCell: View {
             ), couponType: .purchase
         )
         WishCouponCell(
-            saleWish: SaleWish(
+            saleWish: SaleCoupon(
                 title: "Test title",
                 price: 150000,
                 target: PersonTarget.nada,
@@ -158,7 +158,7 @@ struct WishCouponCell: View {
             ), couponType: .refund
         )
         WishCouponCell(
-            saleWish: SaleWish(
+            saleWish: SaleCoupon(
                 title: "Test title",
                 price: 150000,
                 target: PersonTarget.nada,

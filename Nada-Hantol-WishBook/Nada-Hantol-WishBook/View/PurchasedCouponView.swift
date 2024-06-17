@@ -28,7 +28,7 @@ struct PurchasedCouponView: View {
             
             ScrollView {
                 VStack(spacing: 16) {
-                    ForEach(saleWishes) { wish in
+                    ForEach(saleCoupons) { wish in
                         WishCouponCell(
                             saleWish: wish,
                             couponType: .purchase
