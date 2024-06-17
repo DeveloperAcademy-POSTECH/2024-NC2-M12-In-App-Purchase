@@ -7,30 +7,36 @@
 
 import Foundation
 
+@Observable
 final class CouponUseCase {
     
-    let storeService: StoreService
-    let dataService: DataService
+    private let storeService: StoreService
+    private let dataService: DataService
+    
+    private(set) var purchaseCoupons: [PurchaseCoupon]
     
     init(storeService: StoreService, dataService: DataService) {
         self.storeService = storeService
         self.dataService = dataService
+        self.purchaseCoupons = dataService.fetchCoupons()
     }
 }
 
 extension CouponUseCase {
     
     /// 쿠폰을 구매합니다.
-    func purchaseCoupon() {
+    func purchaseCoupon(id: Int) {
         
         // 1. 인앱 구매 창이 떠야함
         
         // 2. 구매 완료에 대한 결과 반환
         
         // 3. 구매한 쿠폰 데이터 생성
-        dataService.createCoupon()
+        dataService.createCoupon(id: id)
         
         // 4. 구매한 쿠폰 구매 완료 alert 출력
+        
+        purchaseCoupons = dataService.fetchCoupons()
     }
     
     /// 쿠폰을 사용합니다.

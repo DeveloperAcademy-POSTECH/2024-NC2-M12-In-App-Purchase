@@ -11,6 +11,8 @@ import SwiftUI
 
 struct PurchasedCouponView: View {
     
+    @Environment(CouponUseCase.self) private var couponUseCase
+    
     @State private var isCouponUseAlertPresented = false
     
     var body: some View {
@@ -18,19 +20,23 @@ struct PurchasedCouponView: View {
             Spacer()
                 .frame(height: 32)
             
-            Text("구매한 쿠폰")
-                .systemFont(.bold, 24)
-                .foregroundStyle(.textBlack)
-                .padding(.horizontal, 24)
+            HStack {
+                Text("구매한 쿠폰")
+                    .systemFont(.bold, 24)
+                    .foregroundStyle(.textBlack)
+                    .padding(.horizontal, 24)
+                
+                Spacer()
+            }
             
             Spacer()
                 .frame(height: 28)
             
             ScrollView {
                 VStack(spacing: 16) {
-                    ForEach(saleCoupons) { wish in
-                        WishCouponCell(
-                            saleWish: wish,
+                    ForEach(couponUseCase.purchaseCoupons) { coupon in
+                        PurchaseCouponCell(
+                            purchaseWish: coupon,
                             couponType: .purchase
                         )
                         .padding(.horizontal, 24)
@@ -59,4 +65,12 @@ struct PurchasedCouponView: View {
 
 #Preview {
     PurchasedCouponView()
+        .environment(
+            CouponUseCase(
+                storeService: .init(),
+                dataService: .init(
+                    modelContext: ModelContainerCoordinator.mockContainer.mainContext
+                )
+            )
+        )
 }

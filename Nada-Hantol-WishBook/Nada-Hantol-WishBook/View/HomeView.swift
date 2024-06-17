@@ -26,6 +26,7 @@ struct HomeView: View {
                 HomeCouponListView()
             }
         }
+        .environment(couponUseCase)
     }
 }
 
@@ -62,15 +63,15 @@ private struct HomeTitleView: View {
             RefundView()
                 .navigationTitle("내 정보")
                 .navigationBarTitleDisplayMode(.large)
-                
         }
-        
     }
 }
 
 // MARK: - HomeCouponListView
 
 struct HomeCouponListView: View {
+    
+    @Environment(CouponUseCase.self) private var couponUseCase
     
     @State private var isInfoSheetPresented = false
     @State private var isPurchasedCouponViewPresented = false
@@ -113,9 +114,13 @@ struct HomeCouponListView: View {
             
             ScrollView {
                 VStack(spacing: 16) {
-                    ForEach(saleCoupons) { wish in
-                        WishCouponCell(saleWish: wish, couponType: .sale)
+                    ForEach(saleCoupons) { coupon in
+                        SaleCouponCell(saleCoupon: coupon)
                             .padding(.horizontal, 24)
+                            .onTapGesture {
+                                print("\(coupon.title) 쿠폰 구매")
+                                couponUseCase.purchaseCoupon(id: coupon.id)
+                            }
                     }
                 }
             }

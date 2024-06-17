@@ -10,33 +10,32 @@ import SwiftUI
 struct PurchaseCouponCell: View {
     
     enum CouponType {
-        case sale
         case purchase
         case refund
         case used
     }
     
-    let saleWish: SaleCoupon
+    let purchaseWish: PurchaseCoupon
     let couponType: CouponType
     
     var body: some View {
         ZStack {
             HStack {
                 VStack(alignment: .leading) {
-                    Text(saleWish.title)
+                    Text(purchaseWish.title)
                         .systemFont(.semiBold, 18)
                         .padding(.bottom, 4)
                     
-                    Text("₩\(saleWish.price)")
+                    Text("₩\(purchaseWish.price)")
                         .systemFont(.bold, 17)
                         .padding(.bottom, 8)
                         .foregroundColor(.point)
                     
                     HStack {
-                        Text(saleWish.target.name)
+                        Text(purchaseWish.target.name)
                             .systemFont(.medium, 14)
                             .foregroundColor(.detailText)
-                        saleWish.target.image
+                        purchaseWish.target.image
                     }
                     .padding(.bottom, 15)
                     
@@ -45,7 +44,7 @@ struct PurchaseCouponCell: View {
                 
                 Spacer()
                 
-                Text(saleWish.emoji)
+                Text(purchaseWish.emoji)
                     .systemFont(.bold, 77)
                     .offset(y: 22)
             }
@@ -66,18 +65,18 @@ struct PurchaseCouponCell: View {
     private func CouponButtonType () -> some View {
         HStack(spacing: 8) {
             switch couponType {
-            case .sale:
-                Button {
-                    
-                } label: {
-                    Text("구매하기")
-                        .systemFont(.bold, 14)
-                        .padding(.horizontal, 12)
-                        .padding(.vertical, 6)
-                        .background(Color(.pointSecondary))
-                        .cornerRadius(8)
-                }
-                .foregroundColor(.point)
+//            case .sale:
+//                Button {
+//                    
+//                } label: {
+//                    Text("구매하기")
+//                        .systemFont(.bold, 14)
+//                        .padding(.horizontal, 12)
+//                        .padding(.vertical, 6)
+//                        .background(Color(.pointSecondary))
+//                        .cornerRadius(8)
+//                }
+//                .foregroundColor(.point)
                 
             case .purchase:
                 Button {
@@ -128,42 +127,5 @@ struct PurchaseCouponCell: View {
                     .foregroundStyle(.detailText)
             }
         }
-    }
-}
-
-#Preview {
-    VStack{
-        PurchaseCouponCell(
-            saleWish: SaleCoupon(
-                title: "Test title",
-                price: 150000,
-                target: PersonTarget.nada,
-                emoji: "🧊"
-            ), couponType: .sale
-        )
-        PurchaseCouponCell(
-            saleWish: SaleCoupon(
-                title: "Test title",
-                price: 150000,
-                target: PersonTarget.nada,
-                emoji: "🧊"
-            ), couponType: .purchase
-        )
-        PurchaseCouponCell(
-            saleWish: SaleCoupon(
-                title: "Test title",
-                price: 150000,
-                target: PersonTarget.nada,
-                emoji: "🧊"
-            ), couponType: .refund
-        )
-        PurchaseCouponCell(
-            saleWish: SaleCoupon(
-                title: "Test title",
-                price: 150000,
-                target: PersonTarget.nada,
-                emoji: "🧊"
-            ), couponType: .used
-        )
     }
 }

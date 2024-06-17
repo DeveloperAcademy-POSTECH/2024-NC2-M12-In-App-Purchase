@@ -22,10 +22,21 @@ struct DataService {
 
 extension DataService {
     
+    /// 쿠폰 리스트를 반환합니다.
+    func fetchCoupons() -> [PurchaseCoupon] {
+        do {
+            let fetchDescriptor = FetchDescriptor<PurchaseCoupon>(sortBy: [.init(\.purchaseDate)])
+            return try modelContext.fetch(fetchDescriptor)
+        } catch {
+            print("PurchaseCoupon 데이터 반환 실패")
+            return []
+        }
+    }
+    
     /// 쿠폰을 생성합니다.
-    func createCoupon() {
-//        let newCoupon = PurchaseCoupon(couponId: <#T##UUID#>)
-//        modelContext.insert(newCoupon)
+    func createCoupon(id: Int) {
+        let newCoupon = PurchaseCoupon(couponId: id)
+        modelContext.insert(newCoupon)
     }
     
     /// 쿠폰 상태를 변경합니다.

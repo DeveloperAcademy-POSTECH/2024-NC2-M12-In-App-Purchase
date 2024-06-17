@@ -8,18 +8,30 @@
 import SwiftUI
 
 struct RefundView: View {
+    
+    @Environment(CouponUseCase.self) private var couponUseCase
+    
     var body: some View {
         
         VStack(alignment: .leading){
             Spacer()
                 .frame(height: 28)
-            Text("쿠폰 환불")
-                .systemFont(.bold, 24)
+            
+            HStack {
+                Text("쿠폰 환불")
+                    .systemFont(.bold, 24)
+                    .foregroundStyle(.textBlack)
+                
+                Spacer()
+            }
             
             ScrollView {
                 VStack(spacing: 16) {
-                    ForEach(saleCoupons) { wish in
-                        WishCouponCell(saleWish: wish, couponType: .refund)
+                    ForEach(couponUseCase.purchaseCoupons) { coupon in
+                        PurchaseCouponCell(
+                            purchaseWish: coupon,
+                            couponType: .refund
+                        )
                     }
                 }
             }
@@ -30,4 +42,12 @@ struct RefundView: View {
 
 #Preview {
     RefundView()
+        .environment(
+            CouponUseCase(
+                storeService: .init(),
+                dataService: .init(
+                    modelContext: ModelContainerCoordinator.mockContainer.mainContext
+                )
+            )
+        )
 }
