@@ -11,6 +11,8 @@
 		0BF157F02C1BF12200722B8A /* PurchaseCouponCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF157EF2C1BF12200722B8A /* PurchaseCouponCell.swift */; };
 		8220C5612C1FC5AE00BC9CF2 /* PurchasedCouponView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8220C5602C1FC5AE00BC9CF2 /* PurchasedCouponView.swift */; };
 		8220C5632C1FC5BF00BC9CF2 /* RefundCouponView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8220C5622C1FC5BF00BC9CF2 /* RefundCouponView.swift */; };
+		825C47C62C2114B000590535 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 825C47C52C2114B000590535 /* StoreKit.framework */; };
+		825C47C82C2114BF00590535 /* CouponProducts.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 825C47C72C2114BF00590535 /* CouponProducts.storekit */; };
 		827E06402C1FBC460064E4AE /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827E063F2C1FBC460064E4AE /* HomeView.swift */; };
 		8287C08D2C1EB47C000C8C3E /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8287C08C2C1EB47C000C8C3E /* ActionButton.swift */; };
 		8287C08F2C1EBB0C000C8C3E /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8287C08E2C1EBB0C000C8C3E /* IconButton.swift */; };
@@ -36,6 +38,8 @@
 		0BF157EF2C1BF12200722B8A /* PurchaseCouponCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseCouponCell.swift; sourceTree = "<group>"; };
 		8220C5602C1FC5AE00BC9CF2 /* PurchasedCouponView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasedCouponView.swift; sourceTree = "<group>"; };
 		8220C5622C1FC5BF00BC9CF2 /* RefundCouponView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefundCouponView.swift; sourceTree = "<group>"; };
+		825C47C52C2114B000590535 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		825C47C72C2114BF00590535 /* CouponProducts.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = CouponProducts.storekit; sourceTree = "<group>"; };
 		827E063F2C1FBC460064E4AE /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		8287C08C2C1EB47C000C8C3E /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		8287C08E2C1EBB0C000C8C3E /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
@@ -62,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				825C47C62C2114B000590535 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +83,22 @@
 				8287C0902C1EBC78000C8C3E /* CouponInfoSheetView.swift */,
 			);
 			path = Component;
+			sourceTree = "<group>";
+		};
+		825C47C32C2114A000590535 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				825C47C72C2114BF00590535 /* CouponProducts.storekit */,
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
+		825C47C42C2114B000590535 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				825C47C52C2114B000590535 /* StoreKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		82C078D02C1FD5B800D4E6AF /* Domain */ = {
@@ -103,6 +124,7 @@
 			children = (
 				82F7CC442C1BD45000ACECA1 /* Nada-Hantol-WishBook */,
 				82F7CC432C1BD45000ACECA1 /* Products */,
+				825C47C42C2114B000590535 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -122,6 +144,7 @@
 				82C078D72C1FE11100D4E6AF /* Data */,
 				82C078D02C1FD5B800D4E6AF /* Domain */,
 				82F7CC562C1BDFB300ACECA1 /* View */,
+				825C47C32C2114A000590535 /* Store */,
 				8220C55F2C1FC12900BC9CF2 /* Component */,
 				82F7CC5F2C1BE61000ACECA1 /* Helper */,
 				82F7CC552C1BDFA600ACECA1 /* Resource */,
@@ -245,6 +268,7 @@
 			files = (
 				82F7CC5E2C1BE50200ACECA1 /* Colors.xcassets in Resources */,
 				82F7CC4D2C1BD45200ACECA1 /* Preview Assets.xcassets in Resources */,
+				825C47C82C2114BF00590535 /* CouponProducts.storekit in Resources */,
 				82F7CC4A2C1BD45200ACECA1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
