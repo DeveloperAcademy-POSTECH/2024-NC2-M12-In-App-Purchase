@@ -6,33 +6,32 @@
 //
 
 import SwiftUI
-
-import SwiftUI
+import StoreKit
 
 struct SaleCouponCell: View {
     
-    let saleCoupon: SaleCoupon
+    let saleCouponProduct: Product
     let purchaseButtonTap: () -> Void
     
     var body: some View {
         ZStack {
             HStack {
                 VStack(alignment: .leading) {
-                    Text(saleCoupon.title)
+                    Text(saleCouponProduct.displayName)
                         .systemFont(.semiBold, 18)
                         .padding(.bottom, 4)
                     
-                    Text("\(saleCoupon.price)")
+                    Text("\(saleCouponProduct.displayPrice)")
                         .systemFont(.bold, 17)
                         .padding(.bottom, 8)
                         .foregroundColor(.point)
                     
                     HStack(spacing: 4) {
-                        Text(saleCoupon.target.name)
+                        Text(saleCouponProduct.target.name)
                             .systemFont(.medium, 14)
                             .foregroundColor(.detailText)
                         
-                        saleCoupon.target.image
+                        saleCouponProduct.target.image
                     }
                     .padding(.bottom, 15)
                     
@@ -51,7 +50,7 @@ struct SaleCouponCell: View {
                 
                 Spacer()
                 
-                Text(saleCoupon.emoji)
+                Text(saleCouponProduct.emoji)
                     .systemFont(.bold, 77)
                     .offset(y: 22)
             }

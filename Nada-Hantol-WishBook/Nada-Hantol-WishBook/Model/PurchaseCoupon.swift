@@ -41,19 +41,19 @@ extension PurchaseCoupon {
         return coupon?.title ?? "이 쿠폰은 잘못된 쿠폰이야"
     }
     
-    /// 쿠폰의 ID를 가지고 쿠폰 제목을 조회합니다.
+    /// 쿠폰의 ID를 가지고 쿠폰 가격을 조회합니다.
     var price: String {
         let coupon = saleCoupons.filter { $0.id == self.couponId }.first
         return coupon?.price ?? "99999999"
     }
     
-    /// 쿠폰의 ID를 가지고 쿠폰 제목을 조회합니다.
+    /// 쿠폰의 ID를 가지고 쿠폰 이모지를 조회합니다.
     var emoji: String {
         let coupon = saleCoupons.filter { $0.id == self.couponId }.first
         return coupon?.emoji ?? "❌"
     }
     
-    /// 쿠폰의 ID를 가지고 쿠폰 제목을 조회합니다.
+    /// 쿠폰의 ID를 가지고 쿠폰 타겟을 조회합니다.
     var target: PersonTarget {
         let coupon = saleCoupons.filter { $0.id == self.couponId }.first
         return coupon?.target ?? .all

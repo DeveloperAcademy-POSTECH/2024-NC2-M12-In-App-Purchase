@@ -59,4 +59,23 @@ struct StoreService {
         default: return nil
         }
     }
+    
+//    func listenForTransactions() -> Task < Void, Error > {
+//     return Task.detached {
+//       for await result in Transaction.updates {
+//         switch result {
+//           case let.verified(transaction):
+//             guard let product = self.products.first(where: {
+//               $0.id == transaction.productID
+//             }) else {
+//               continue
+//             }
+//             self.purchasedNonConsumables.append(product)
+//             await transaction.finish()
+//           default:
+//             continue
+//         }
+//       }
+//     }
+//   }
 }
