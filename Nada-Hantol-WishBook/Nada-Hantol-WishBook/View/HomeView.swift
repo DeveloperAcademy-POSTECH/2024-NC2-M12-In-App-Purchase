@@ -25,7 +25,9 @@ struct HomeView: View {
                     .frame(height: 8)
                     .foregroundStyle(.defaultBG)
                 
-                HomeCouponListView()
+                ScrollView {
+                    HomeCouponListView()
+                }
             }
         }
         .environment(couponUseCase)
@@ -115,17 +117,15 @@ struct HomeCouponListView: View {
             Spacer()
                 .frame(height: 24)
             
-            ScrollView {
-                VStack(spacing: 16) {
-                    ForEach(store.products) { product in
-                        SaleCouponCell(saleCouponProduct: product) {
-                            Task {
-                                try await store.purchase(product)
-                            }
-                            // couponUseCase.purchaseCoupon(id: coupon.id)
+            VStack(spacing: 16) {
+                ForEach(store.products) { product in
+                    SaleCouponCell(saleCouponProduct: product) {
+                        Task {
+                            try await store.purchase(product)
                         }
-                        .padding(.horizontal, 24)
+                        // couponUseCase.purchaseCoupon(id: coupon.id)
                     }
+                    .padding(.horizontal, 24)
                 }
             }
         }
