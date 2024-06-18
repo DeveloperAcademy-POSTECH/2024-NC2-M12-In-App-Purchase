@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import StoreKit
 
 struct PurchaseCouponCell: View {
     
@@ -15,7 +16,7 @@ struct PurchaseCouponCell: View {
         case used
     }
     
-    let purchaseCoupon: PurchaseCoupon
+    let purchaseCoupon: Product
     let couponType: CouponType
     let buttonTap: () -> Void
     
@@ -23,7 +24,7 @@ struct PurchaseCouponCell: View {
         ZStack {
             HStack {
                 VStack(alignment: .leading) {
-                    Text(purchaseCoupon.title)
+                    Text(purchaseCoupon.displayName)
                         .systemFont(.semiBold, 18)
                         .padding(.bottom, 4)
                     
@@ -85,7 +86,7 @@ struct PurchaseCouponCell: View {
                 }
                 .foregroundColor(.point)
                 
-                Text("구매일 \(purchaseCoupon.purchaseDate.yearMonthDay)")
+                Text("구매일 \(purchaseCoupon)")
                     .systemFont(.semiBold, 12)
                     .foregroundStyle(.detailText)
                 
@@ -102,12 +103,12 @@ struct PurchaseCouponCell: View {
                 }
                 .foregroundColor(.warningText)
                 
-                Text("구매일 \(purchaseCoupon.purchaseDate.yearMonthDay)")
+                Text("구매일 TEST")
                     .systemFont(.semiBold, 12)
                     .foregroundStyle(.detailText)
                 
             case .used:
-                Text("구매일 \(purchaseCoupon.purchaseDate.yearMonthDay)")
+                Text("구매일 TEST")
                     .systemFont(.semiBold, 12)
                     .foregroundStyle(.detailText)
                 
@@ -116,7 +117,7 @@ struct PurchaseCouponCell: View {
                     .frame(width: 2, height: 8)
                     .clipShape(RoundedRectangle(cornerRadius: 4))
                 
-                Text("사용일 \(purchaseCoupon.usedDate?.yearMonthDay ?? "ERROR")")
+                Text("사용일 TEST")
                     .systemFont(.semiBold, 12)
                     .foregroundStyle(.detailText)
             }

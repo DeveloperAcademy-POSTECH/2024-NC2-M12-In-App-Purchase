@@ -6,27 +6,20 @@
 //
 
 import SwiftUI
+import StoreKit
 
 // MARK: - PurchasedCouponView
 
 struct PurchasedCouponView: View {
     
     @Environment(CouponUseCase.self) private var couponUseCase
+    @EnvironmentObject private var store: Store
     
     @State private var isCouponAvailableToggle = false
     @State private var isCouponUseAlertPresented = false
     @State private var isCompleteAlertPresented = false
     
-    @State private var selectedCoupon: PurchaseCoupon?
-    
-    /// 쿠폰 리스트를 반환합니다.
-    var couponList: [PurchaseCoupon] {
-        if isCouponAvailableToggle {
-            return couponUseCase.purchaseCoupons.filter { !$0.isUsed }
-        } else {
-            return couponUseCase.purchaseCoupons
-        }
-    }
+    @State private var selectedCoupon: Product?
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -60,7 +53,7 @@ struct PurchasedCouponView: View {
                 .frame(height: 32)
             
             HStack {
-                Text("전체 \(couponList.count)")
+                Text("전체 \(store.purchasedCoupons.count)")
                     .systemFont(.semiBold, 14)
                     .foregroundStyle(.detailText)
                 
@@ -84,10 +77,10 @@ struct PurchasedCouponView: View {
             
             ScrollView {
                 VStack(spacing: 16) {
-                    ForEach(couponList) { coupon in
+                    ForEach(store.purchasedCoupons) { coupon in
                         PurchaseCouponCell(
                             purchaseCoupon: coupon,
-                            couponType: coupon.isUsed ? .used : .purchase
+                            couponType: .purchase
                         ) {
                             selectedCoupon = coupon
                             isCouponUseAlertPresented.toggle()
@@ -97,12 +90,12 @@ struct PurchasedCouponView: View {
                 }
             }
             .alert(
-                "\(selectedCoupon?.title ?? "ERROR") 쿠폰을 사용하시겠습니까?",
+                "\(selectedCoupon?.displayName ?? "ERROR") 쿠폰을 사용하시겠습니까?",
                 isPresented: $isCouponUseAlertPresented,
                 actions: {
                     Button("그만두기", role: .none) {}
                     Button("사용하기", role: .none) {
-                        couponUseCase.useCoupon(selectedCoupon)
+                        // couponUseCase.useCoupon(selectedCoupon)
                         isCompleteAlertPresented.toggle()
                     }
                 },
