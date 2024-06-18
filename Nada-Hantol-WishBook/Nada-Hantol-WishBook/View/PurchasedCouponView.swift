@@ -39,11 +39,11 @@ struct PurchasedCouponView: View {
                     .systemFont(.bold, 14)
                     .foregroundStyle(.detailText)
                 
-                Text("₩\(couponUseCase.purchaseCoupons.totalPrice)원")
+                Text("$\(store.totalPrice)달러")
                     .systemFont(.bold, 14)
                     .foregroundStyle(.point)
                 
-                Text("어치 쿠폰을 구매했어요")
+                Text("만큼 쿠폰을 구매했어요")
                     .systemFont(.bold, 14)
                     .foregroundStyle(.detailText)
             }
@@ -53,7 +53,7 @@ struct PurchasedCouponView: View {
                 .frame(height: 32)
             
             HStack {
-                Text("전체 \(store.purchasedCoupons.count)")
+                Text("전체 \(store.purchasedProducts.count)")
                     .systemFont(.semiBold, 14)
                     .foregroundStyle(.detailText)
                 
@@ -77,7 +77,7 @@ struct PurchasedCouponView: View {
             
             ScrollView {
                 VStack(spacing: 16) {
-                    ForEach(store.purchasedCoupons) { coupon in
+                    ForEach(store.purchasedProducts) { coupon in
                         PurchaseCouponCell(
                             purchaseCoupon: coupon,
                             couponType: .purchase

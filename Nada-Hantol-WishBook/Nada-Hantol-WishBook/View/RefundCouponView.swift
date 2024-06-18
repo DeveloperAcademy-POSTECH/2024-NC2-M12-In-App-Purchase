@@ -30,7 +30,7 @@ struct RefundCouponView: View {
             
             ScrollView {
                 VStack(spacing: 16) {
-                    ForEach(store.purchasedCoupons) { coupon in
+                    ForEach(store.purchasedProducts) { coupon in
                         PurchaseCouponCell(
                             purchaseCoupon: coupon,
                             couponType: .refund
