@@ -27,6 +27,9 @@ struct HomeView: View {
             }
         }
         .environment(couponUseCase)
+        .onAppear {
+            couponUseCase.fetchSaleCoupons()
+        }
     }
 }
 
@@ -114,7 +117,7 @@ struct HomeCouponListView: View {
             
             ScrollView {
                 VStack(spacing: 16) {
-                    ForEach(saleCoupons) { coupon in
+                    ForEach(couponUseCase.saleCoupons) { coupon in
                         SaleCouponCell(saleCoupon: coupon) {
                             couponUseCase.purchaseCoupon(id: coupon.id)
                         }

@@ -10,7 +10,7 @@ import Foundation
 struct SaleCoupon: Identifiable {
     let id: Int
     let title: String
-    let price: Int
+    let price: String
     let target: PersonTarget
     let emoji: String
 }

@@ -42,9 +42,9 @@ extension PurchaseCoupon {
     }
     
     /// 쿠폰의 ID를 가지고 쿠폰 제목을 조회합니다.
-    var price: Int {
+    var price: String {
         let coupon = saleCoupons.filter { $0.id == self.couponId }.first
-        return coupon?.price ?? 0
+        return coupon?.price ?? "99999999"
     }
     
     /// 쿠폰의 ID를 가지고 쿠폰 제목을 조회합니다.
@@ -64,7 +64,13 @@ extension [PurchaseCoupon] {
     
     /// 현재까지 구매한 쿠폰의 총 금액을 반환합니다.
     var totalPrice: Int {
-        let total = self.reduce(0) { $0 + $1.price }
+        let total = self.reduce(0) {
+            if let secondInt = Int($1.price) {
+                return $0 + secondInt
+            }
+            
+            return 0
+        }
         return total
     }
 }

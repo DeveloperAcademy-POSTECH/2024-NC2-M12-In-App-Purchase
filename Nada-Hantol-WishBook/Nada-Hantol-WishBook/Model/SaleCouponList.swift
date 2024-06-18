@@ -11,7 +11,7 @@ let saleCoupons: [SaleCoupon] = [
     SaleCoupon(
         id: 0,
         title: "도서관에서 얼음 떠오기",
-        price: 3300,
+        price: "",
         target: PersonTarget.nada,
         emoji: "🧊"
     ),
@@ -19,7 +19,7 @@ let saleCoupons: [SaleCoupon] = [
     SaleCoupon(
         id: 1,
         title: "목적지까지 데려다주기",
-        price: 5500,
+        price: "",
         target: PersonTarget.hantol,
         emoji: "🏠"
     ),
@@ -27,7 +27,7 @@ let saleCoupons: [SaleCoupon] = [
     SaleCoupon(
         id: 2,
         title: "편의점 음식 대신 사다주기",
-        price: 12000,
+        price: "",
         target: PersonTarget.all,
         emoji: "🥐"
     ),
@@ -35,7 +35,7 @@ let saleCoupons: [SaleCoupon] = [
     SaleCoupon(
         id: 3,
         title: "진심 어린 칭찬 듣기",
-        price: 100,
+        price: "",
         target: PersonTarget.all,
         emoji: "🔮"
     ),

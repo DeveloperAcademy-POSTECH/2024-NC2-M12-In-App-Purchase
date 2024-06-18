@@ -22,7 +22,7 @@ struct SaleCouponCell: View {
                         .systemFont(.semiBold, 18)
                         .padding(.bottom, 4)
                     
-                    Text("₩\(saleCoupon.price)")
+                    Text("\(saleCoupon.price)")
                         .systemFont(.bold, 17)
                         .padding(.bottom, 8)
                         .foregroundColor(.point)

@@ -13,16 +13,24 @@ final class CouponUseCase {
     private let storeService: StoreService
     private let dataService: DataService
     
+    private(set) var saleCoupons: [SaleCoupon]
     private(set) var purchaseCoupons: [PurchaseCoupon]
     
     init(storeService: StoreService, dataService: DataService) {
         self.storeService = storeService
         self.dataService = dataService
+        self.saleCoupons = []
         self.purchaseCoupons = dataService.fetchCoupons()
     }
 }
 
 extension CouponUseCase {
+    
+    func fetchSaleCoupons() {
+        Task {
+            saleCoupons = await storeService.requestProducts()
+        }
+    }
     
     /// 쿠폰을 구매합니다.
     func purchaseCoupon(id: Int) {
