@@ -27,9 +27,18 @@ final class CouponUseCase {
 extension CouponUseCase {
     
     /// PurchaseCoupon을 SaleCoupon으로 반환합니다.
-    func toSaleCoupon(_ purchaseCoupon: PurchaseCoupon) -> SaleCoupon? {
+    func toSaleCoupon(_ purchaseCoupon: PurchaseCoupon) -> SaleCoupon {
         guard let coupon = saleCoupons.filter({ $0.id == purchaseCoupon.couponId }).first
-        else { return nil }
+        else {
+            return SaleCoupon(
+                id: 0,
+                title: "ERROR",
+                price: 0,
+                displayPrice: "",
+                target: .all,
+                emoji: ""
+            )
+        }
         return coupon
     }
     
@@ -37,8 +46,7 @@ extension CouponUseCase {
     func totalPrice() -> Decimal {
         var price: Decimal = 0
         for coupon in self.purchaseCoupons {
-            guard let saleCoupon = toSaleCoupon(coupon) else { return 0 }
-            price += saleCoupon.price
+            price += toSaleCoupon(coupon).price
         }
         
         return price

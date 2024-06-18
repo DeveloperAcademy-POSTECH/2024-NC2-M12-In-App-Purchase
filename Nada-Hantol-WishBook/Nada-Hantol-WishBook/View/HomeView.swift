@@ -14,8 +14,6 @@ struct HomeView: View {
     
     @State private(set) var couponUseCase: CouponUseCase
     
-    @State private var store: Store = .init()
-    
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
@@ -31,7 +29,6 @@ struct HomeView: View {
             }
         }
         .environment(couponUseCase)
-        .environmentObject(store)
         .onAppear {
             couponUseCase.fetchSaleCoupons()
         }

@@ -26,11 +26,11 @@ struct PurchaseCouponCell: View {
         ZStack {
             HStack {
                 VStack(alignment: .leading) {
-                    Text(couponUseCase.toSaleCoupon(purchaseCoupon)?.title ?? "ERROR")
+                    Text(couponUseCase.toSaleCoupon(purchaseCoupon).title)
                         .systemFont(.semiBold, 18)
                         .padding(.bottom, 4)
                     
-                    Text(couponUseCase.toSaleCoupon(purchaseCoupon)?.displayPrice ?? "ERROR")
+                    Text(couponUseCase.toSaleCoupon(purchaseCoupon).displayPrice)
                         .systemFont(.bold, 17)
                         .padding(.bottom, 8)
                         .foregroundColor(.point)

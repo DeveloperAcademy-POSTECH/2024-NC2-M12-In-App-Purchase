@@ -97,7 +97,7 @@ struct PurchasedCouponView: View {
                 }
             }
             .alert(
-                "\(selectedCoupon?.title ?? "ERROR") 쿠폰을 사용하시겠습니까?",
+                "\(couponUseCase.toSaleCoupon(selectedCoupon ?? .init(couponId: 0)).title) 쿠폰을 사용하시겠습니까?",
                 isPresented: $isCouponUseAlertPresented,
                 actions: {
                     Button("그만두기", role: .none) {}
