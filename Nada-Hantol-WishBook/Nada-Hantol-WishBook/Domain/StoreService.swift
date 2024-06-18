@@ -41,4 +41,22 @@ struct StoreService {
             return []
         }
     }
+    
+    @MainActor
+    func purchase(id: Int) async throws -> PurchaseCoupon? {
+        
+        guard let product = try await Product.products(for: ["coupon\(id)"]).first else {
+            print("상품을 받아올 수 없습니다!")
+            return nil
+        }
+        
+        let result = try await product.purchase()
+        switch result {
+        case .success(.verified(let transaction)):
+            await transaction.finish()
+            return PurchaseCoupon(couponId: id)
+        
+        default: return nil
+        }
+    }
 }

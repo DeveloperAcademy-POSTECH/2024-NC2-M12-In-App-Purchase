@@ -20,7 +20,8 @@ final class CouponUseCase {
         self.storeService = storeService
         self.dataService = dataService
         self.saleCoupons = []
-        self.purchaseCoupons = dataService.fetchCoupons()
+        self.purchaseCoupons = []
+        // self.purchaseCoupons = dataService.fetchCoupons()
     }
 }
 
@@ -36,11 +37,15 @@ extension CouponUseCase {
     func purchaseCoupon(id: Int) {
         
         // 1. 인앱 구매 창이 떠야함
+        Task {
+            guard let purchaseCoupon = try await storeService.purchase(id: id) else { return }
+            purchaseCoupons.append(purchaseCoupon)
+        }
         
         // 2. 구매 완료에 대한 결과 반환
         
         // 3. 구매한 쿠폰 데이터 생성
-        dataService.createCoupon(id: id)
+//        dataService.createCoupon(id: id)
         
         // 4. 구매한 쿠폰 구매 완료 alert 출력
         
