@@ -23,7 +23,13 @@ final class Store: ObservableObject {
     /// 구매한 상품 목록
     @Published var purchasedProducts = [Product]()
     
+    /// 새로운 거래가 발생하는지 확인하고 실행하는 리스너
+    var transactionListener: Task<Void, Error>?
+    
     init() {
+        // 리스너 실행
+        transactionListener = listenForTransaction()
+        
         Task {
             // 초기화와 동시에 상품 진열
             await requestProduct()
@@ -85,6 +91,40 @@ final class Store: ObservableObject {
             
             // 2. 실패, 취소 됐을 때(cancel, pending)
         default: return nil
+        }
+    }
+    
+    func listenForTransaction() -> Task<Void, Error> {
+        
+        // 1. Listen 매커니즘은 실시간으로 작업을 수행해야 함.
+        // 하지만 앱은 별개로 UI 액션과 같은 다른 작업을 수행해야 하기 때문에 Task를 분리하는 것.
+        return Task(priority: .background) {
+            
+            // 2. 지속적으로 새로운 Transaction을 모니터링하고 새로운 Transaction이 나타내면 받아옴.
+            for await verificationResult in Transaction.updates {
+                
+                // 3. 거래 결과 확인
+                switch verificationResult {
+                    
+                    // 4. 거래 성공!
+                    // transaction은 product 객체를 가지고 있지 않기 때문에 요렇게 ID 값을 이용해 불러옴.
+                case .verified(let transaction):
+                    guard let product = self.products.first(where: {
+                        $0.id == transaction.productID
+                    }) else {
+                        continue
+                    }
+                    
+                    // 구매한 Product에 추가
+                    self.purchasedProducts.append(product)
+                    
+                    // 거래 프로세스 종료
+                    await transaction.finish()
+                    
+                    // 5. 거래 실패.
+                default: continue
+                }
+            }
         }
     }
 }
