@@ -42,10 +42,10 @@ extension PurchaseCoupon {
     }
     
     /// 쿠폰의 ID를 가지고 쿠폰 가격을 조회합니다.
-    var price: String {
-        let coupon = saleCoupons.filter { $0.id == self.couponId }.first
-        return coupon?.price ?? "99999999"
-    }
+//    var price: String {
+//        let coupon = saleCoupons.filter { $0.id == self.couponId }.first
+//        return coupon?.price ?? "99999999"
+//    }
     
     /// 쿠폰의 ID를 가지고 쿠폰 이모지를 조회합니다.
     var emoji: String {
@@ -63,14 +63,14 @@ extension PurchaseCoupon {
 extension [PurchaseCoupon] {
     
     /// 현재까지 구매한 쿠폰의 총 금액을 반환합니다.
-    var totalPrice: Int {
-        let total = self.reduce(0) {
-            if let secondInt = Int($1.price) {
-                return $0 + secondInt
-            }
-            
-            return 0
-        }
-        return total
-    }
+//    var totalPrice: Int {
+//        let total = self.reduce(0) {
+//            if let secondInt = Int($1.price) {
+//                return $0 + secondInt
+//            }
+//            
+//            return 0
+//        }
+//        return total
+//    }
 }

@@ -10,19 +10,25 @@ import StoreKit
 
 struct StoreService {
     
+    enum IAPError: Error {
+        case cannotFoundProduct
+        case unverified
+    }
+    
     private var productIDs = ["coupon0", "coupon1", "coupon2"]
     
     @MainActor
     func requestProducts() async -> [SaleCoupon] {
         do {
             let saleProducts = try await Product.products(for: productIDs)
-            return saleProducts.map {
+            let coupons = saleProducts.map {
                 if let lastChar = $0.id.last,
                    let id = Int(String(lastChar)) {
                     return SaleCoupon(
                         id: id,
                         title: $0.displayName,
-                        price: $0.displayPrice,
+                        price: $0.price,
+                        displayPrice: $0.displayPrice,
                         target: saleCoupons[id].target,
                         emoji: saleCoupons[id].emoji
                     )
@@ -31,11 +37,14 @@ struct StoreService {
                 return SaleCoupon(
                     id: 0,
                     title: "",
-                    price: "",
+                    price: 0,
+                    displayPrice: "0",
                     target: .all,
                     emoji: ""
                 )
             }
+            
+            return coupons.sorted { $0.id < $1.id }
         } catch {
             print(error.localizedDescription)
             return []
@@ -43,20 +52,19 @@ struct StoreService {
     }
     
     @MainActor
-    func purchase(id: Int) async throws -> PurchaseCoupon? {
+    func purchase(id: Int) async throws -> Result<Date, IAPError> {
         
         guard let product = try await Product.products(for: ["coupon\(id)"]).first else {
-            print("상품을 받아올 수 없습니다!")
-            return nil
+            return .failure(.cannotFoundProduct)
         }
         
         let result = try await product.purchase()
         switch result {
         case .success(.verified(let transaction)):
             await transaction.finish()
-            return PurchaseCoupon(couponId: id)
-        
-        default: return nil
+            return .success(transaction.purchaseDate)
+            
+        default: return .failure(.unverified)
         }
     }
     

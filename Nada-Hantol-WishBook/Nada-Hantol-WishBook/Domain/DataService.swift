@@ -35,8 +35,8 @@ extension DataService {
     }
     
     /// 쿠폰을 생성합니다.
-    func createCoupon(id: Int) {
-        let newCoupon = PurchaseCoupon(couponId: id)
+    func createCoupon(id: Int, purchaseDate: Date) {
+        let newCoupon = PurchaseCoupon(couponId: id, purchaseDate: purchaseDate)
         modelContext.insert(newCoupon)
     }
     

@@ -12,13 +12,21 @@ import StoreKit
 
 struct PurchasedCouponView: View {
     
-    @EnvironmentObject private var store: Store
+    @Environment(CouponUseCase.self) private var couponUseCase
     
     @State private var isCouponAvailableToggle = false
     @State private var isCouponUseAlertPresented = false
     @State private var isCompleteAlertPresented = false
     
-    @State private var selectedCoupon: Product?
+    @State private var selectedCoupon: PurchaseCoupon?
+    
+    private var coupons: [PurchaseCoupon] {
+        if isCouponAvailableToggle {
+            return couponUseCase.purchaseCoupons.filter { !$0.isUsed }
+        } else {
+            return couponUseCase.purchaseCoupons
+        }
+    }
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -38,7 +46,7 @@ struct PurchasedCouponView: View {
                     .systemFont(.bold, 14)
                     .foregroundStyle(.detailText)
                 
-                Text("$\(store.totalPrice)달러")
+                Text("$\(couponUseCase.totalPrice())달러")
                     .systemFont(.bold, 14)
                     .foregroundStyle(.point)
                 
@@ -52,7 +60,7 @@ struct PurchasedCouponView: View {
                 .frame(height: 32)
             
             HStack {
-                Text("전체 \(store.purchasedProducts.count)")
+                Text("전체 \(couponUseCase.purchaseCoupons.count)")
                     .systemFont(.semiBold, 14)
                     .foregroundStyle(.detailText)
                 
@@ -76,10 +84,10 @@ struct PurchasedCouponView: View {
             
             ScrollView {
                 VStack(spacing: 16) {
-                    ForEach(store.purchasedProducts) { coupon in
+                    ForEach(coupons) { coupon in
                         PurchaseCouponCell(
                             purchaseCoupon: coupon,
-                            couponType: .purchase
+                            couponType: coupon.isUsed ? .used : .purchase
                         ) {
                             selectedCoupon = coupon
                             isCouponUseAlertPresented.toggle()
@@ -89,12 +97,12 @@ struct PurchasedCouponView: View {
                 }
             }
             .alert(
-                "\(selectedCoupon?.displayName ?? "ERROR") 쿠폰을 사용하시겠습니까?",
+                "\(selectedCoupon?.title ?? "ERROR") 쿠폰을 사용하시겠습니까?",
                 isPresented: $isCouponUseAlertPresented,
                 actions: {
                     Button("그만두기", role: .none) {}
                     Button("사용하기", role: .none) {
-                        // couponUseCase.useCoupon(selectedCoupon)
+                        couponUseCase.useCoupon(selectedCoupon)
                         isCompleteAlertPresented.toggle()
                     }
                 },

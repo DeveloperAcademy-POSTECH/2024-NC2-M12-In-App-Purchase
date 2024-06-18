@@ -11,8 +11,6 @@ struct RefundCouponView: View {
     
     @Environment(CouponUseCase.self) private var couponUseCase
     
-    @EnvironmentObject private var store: Store
-    
     var body: some View {
         
         VStack(alignment: .leading){
@@ -30,7 +28,7 @@ struct RefundCouponView: View {
             
             ScrollView {
                 VStack(spacing: 16) {
-                    ForEach(store.purchasedProducts) { coupon in
+                    ForEach(couponUseCase.purchaseCoupons) { coupon in
                         PurchaseCouponCell(
                             purchaseCoupon: coupon,
                             couponType: .refund

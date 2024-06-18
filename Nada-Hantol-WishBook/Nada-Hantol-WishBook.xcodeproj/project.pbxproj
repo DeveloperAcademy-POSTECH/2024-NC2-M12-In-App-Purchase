@@ -171,8 +171,8 @@
 			isa = PBXGroup;
 			children = (
 				82F7CC572C1BDFEF00ACECA1 /* SaleCoupon.swift */,
-				0B7919902C1CC9FD0024D53B /* SaleCouponList.swift */,
 				82F7CC5B2C1BE2AC00ACECA1 /* PurchaseCoupon.swift */,
+				0B7919902C1CC9FD0024D53B /* SaleCouponList.swift */,
 				82F7CC622C1BEFB200ACECA1 /* PersonTarget.swift */,
 			);
 			path = Model;

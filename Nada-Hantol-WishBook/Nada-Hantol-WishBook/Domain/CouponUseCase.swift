@@ -20,12 +20,29 @@ final class CouponUseCase {
         self.storeService = storeService
         self.dataService = dataService
         self.saleCoupons = []
-        self.purchaseCoupons = []
-        // self.purchaseCoupons = dataService.fetchCoupons()
+        self.purchaseCoupons = dataService.fetchCoupons()
     }
 }
 
 extension CouponUseCase {
+    
+    /// PurchaseCoupon을 SaleCoupon으로 반환합니다.
+    func toSaleCoupon(_ purchaseCoupon: PurchaseCoupon) -> SaleCoupon? {
+        guard let coupon = saleCoupons.filter({ $0.id == purchaseCoupon.couponId }).first
+        else { return nil }
+        return coupon
+    }
+    
+    /// 총 가격을 반환합니다.
+    func totalPrice() -> Decimal {
+        var price: Decimal = 0
+        for coupon in self.purchaseCoupons {
+            guard let saleCoupon = toSaleCoupon(coupon) else { return 0 }
+            price += saleCoupon.price
+        }
+        
+        return price
+    }
     
     func fetchSaleCoupons() {
         Task {
@@ -38,18 +55,26 @@ extension CouponUseCase {
         
         // 1. 인앱 구매 창이 떠야함
         Task {
-            guard let purchaseCoupon = try await storeService.purchase(id: id) else { return }
-            purchaseCoupons.append(purchaseCoupon)
+            do {
+                // 인앱 결제 창 실행 및 결과 대기
+                let result = try await storeService.purchase(id: id)
+                
+                switch result {
+                    
+                    // 인앱 구매 성공 시
+                case .success(let purchaseDate):
+                    dataService.createCoupon(id: id, purchaseDate: purchaseDate)
+                    purchaseCoupons = dataService.fetchCoupons()
+                    
+                    // 인앱 구매 실패 시
+                case .failure(let failure):
+                    print(failure.localizedDescription)
+                }
+                
+            } catch {
+                print("인앱 구매 에러 발생!")
+            }
         }
-        
-        // 2. 구매 완료에 대한 결과 반환
-        
-        // 3. 구매한 쿠폰 데이터 생성
-//        dataService.createCoupon(id: id)
-        
-        // 4. 구매한 쿠폰 구매 완료 alert 출력
-        
-        purchaseCoupons = dataService.fetchCoupons()
     }
     
     /// 쿠폰을 사용합니다.

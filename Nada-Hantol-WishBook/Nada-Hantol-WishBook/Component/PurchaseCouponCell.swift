@@ -10,13 +10,15 @@ import StoreKit
 
 struct PurchaseCouponCell: View {
     
+    @Environment(CouponUseCase.self) private var couponUseCase
+    
     enum CouponType {
         case purchase
         case refund
         case used
     }
     
-    let purchaseCoupon: Product
+    let purchaseCoupon: PurchaseCoupon
     let couponType: CouponType
     let buttonTap: () -> Void
     
@@ -24,11 +26,11 @@ struct PurchaseCouponCell: View {
         ZStack {
             HStack {
                 VStack(alignment: .leading) {
-                    Text(purchaseCoupon.displayName)
+                    Text(couponUseCase.toSaleCoupon(purchaseCoupon)?.title ?? "ERROR")
                         .systemFont(.semiBold, 18)
                         .padding(.bottom, 4)
                     
-                    Text("\(purchaseCoupon.displayPrice)")
+                    Text(couponUseCase.toSaleCoupon(purchaseCoupon)?.displayPrice ?? "ERROR")
                         .systemFont(.bold, 17)
                         .padding(.bottom, 8)
                         .foregroundColor(.point)
@@ -86,7 +88,7 @@ struct PurchaseCouponCell: View {
                 }
                 .foregroundColor(.point)
                 
-                Text("구매일 \(purchaseCoupon)")
+                Text("구매일 \(purchaseCoupon.purchaseDate.yearMonthDay)")
                     .systemFont(.semiBold, 12)
                     .foregroundStyle(.detailText)
                 
@@ -103,12 +105,12 @@ struct PurchaseCouponCell: View {
                 }
                 .foregroundColor(.warningText)
                 
-                Text("구매일 TEST")
+                Text("구매일 \(purchaseCoupon.purchaseDate.yearMonthDay)")
                     .systemFont(.semiBold, 12)
                     .foregroundStyle(.detailText)
                 
             case .used:
-                Text("구매일 TEST")
+                Text("구매일 \(purchaseCoupon.purchaseDate.yearMonthDay)")
                     .systemFont(.semiBold, 12)
                     .foregroundStyle(.detailText)
                 
@@ -117,7 +119,7 @@ struct PurchaseCouponCell: View {
                     .frame(width: 2, height: 8)
                     .clipShape(RoundedRectangle(cornerRadius: 4))
                 
-                Text("사용일 TEST")
+                Text("사용일 \(purchaseCoupon.usedDate?.yearMonthDay ?? "ERROR")")
                     .systemFont(.semiBold, 12)
                     .foregroundStyle(.detailText)
             }

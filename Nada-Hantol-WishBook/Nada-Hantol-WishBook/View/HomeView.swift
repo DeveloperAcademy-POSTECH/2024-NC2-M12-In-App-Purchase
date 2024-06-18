@@ -32,6 +32,9 @@ struct HomeView: View {
         }
         .environment(couponUseCase)
         .environmentObject(store)
+        .onAppear {
+            couponUseCase.fetchSaleCoupons()
+        }
     }
 }
 
@@ -76,7 +79,7 @@ private struct HomeTitleView: View {
 
 struct HomeCouponListView: View {
     
-    @EnvironmentObject private var store: Store
+    @Environment(CouponUseCase.self) private var couponUseCase
     
     @State private var isInfoSheetPresented = false
     @State private var isPurchasedCouponViewPresented = false
@@ -118,12 +121,9 @@ struct HomeCouponListView: View {
                 .frame(height: 24)
             
             VStack(spacing: 16) {
-                ForEach(store.products) { product in
-                    SaleCouponCell(saleCouponProduct: product) {
-                        Task {
-                            try await store.purchase(product)
-                        }
-                        // couponUseCase.purchaseCoupon(id: coupon.id)
+                ForEach(couponUseCase.saleCoupons) { coupon in
+                    SaleCouponCell(saleCoupon: coupon) {
+                        couponUseCase.purchaseCoupon(id: coupon.id)
                     }
                     .padding(.horizontal, 24)
                 }
