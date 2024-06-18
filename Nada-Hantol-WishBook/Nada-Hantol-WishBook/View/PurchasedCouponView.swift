@@ -12,7 +12,6 @@ import StoreKit
 
 struct PurchasedCouponView: View {
     
-    @Environment(CouponUseCase.self) private var couponUseCase
     @EnvironmentObject private var store: Store
     
     @State private var isCouponAvailableToggle = false
