@@ -14,8 +14,6 @@ struct HomeView: View {
     
     @State private(set) var couponUseCase: CouponUseCase
     
-    @State private var store: Store = .init()
-    
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
@@ -25,11 +23,15 @@ struct HomeView: View {
                     .frame(height: 8)
                     .foregroundStyle(.defaultBG)
                 
-                HomeCouponListView()
+                ScrollView {
+                    HomeCouponListView()
+                }
             }
         }
         .environment(couponUseCase)
-        .environmentObject(store)
+        .onAppear {
+            couponUseCase.fetchSaleCoupons()
+        }
     }
 }
 
@@ -74,7 +76,7 @@ private struct HomeTitleView: View {
 
 struct HomeCouponListView: View {
     
-    @EnvironmentObject private var store: Store
+    @Environment(CouponUseCase.self) private var couponUseCase
     
     @State private var isInfoSheetPresented = false
     @State private var isPurchasedCouponViewPresented = false
@@ -115,17 +117,12 @@ struct HomeCouponListView: View {
             Spacer()
                 .frame(height: 24)
             
-            ScrollView {
-                VStack(spacing: 16) {
-                    ForEach(store.products) { product in
-                        SaleCouponCell(saleCouponProduct: product) {
-                            Task {
-                                try await store.purchase(product)
-                            }
-                            // couponUseCase.purchaseCoupon(id: coupon.id)
-                        }
-                        .padding(.horizontal, 24)
+            VStack(spacing: 16) {
+                ForEach(couponUseCase.saleCoupons) { coupon in
+                    SaleCouponCell(saleCoupon: coupon) {
+                        couponUseCase.purchaseCoupon(couponId: coupon.id)
                     }
+                    .padding(.horizontal, 24)
                 }
             }
         }
