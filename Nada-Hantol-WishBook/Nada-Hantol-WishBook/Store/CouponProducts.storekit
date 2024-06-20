@@ -1,0 +1,112 @@
+{
+  "identifier" : "1C9887EB",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "3500",
+      "familyShareable" : false,
+      "internalID" : "90D8FB25",
+      "localizations" : [
+        {
+          "description" : "",
+          "displayName" : "도서관에서 얼음 떠오기",
+          "locale" : "ko"
+        }
+      ],
+      "productID" : "coupon0",
+      "referenceName" : "Coupon0",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "150000",
+      "familyShareable" : false,
+      "internalID" : "E4339101",
+      "localizations" : [
+        {
+          "description" : "",
+          "displayName" : "집가는 길 바래다주기",
+          "locale" : "ko"
+        }
+      ],
+      "productID" : "coupon1",
+      "referenceName" : "Coupon1",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "320000",
+      "familyShareable" : false,
+      "internalID" : "8C256DAB",
+      "localizations" : [
+        {
+          "description" : "",
+          "displayName" : "편의점 음식 대신 사다주기",
+          "locale" : "ko"
+        }
+      ],
+      "productID" : "coupon2",
+      "referenceName" : "Coupon2",
+      "type" : "Consumable"
+    }
+  ],
+  "settings" : {
+    "_failTransactionsEnabled" : false,
+    "_locale" : "ko",
+    "_storefront" : "KOR",
+    "_storeKitErrors" : [
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Load Products"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Purchase"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Verification"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Store Sync"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Subscription Status"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Transaction"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Manage Subscriptions Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Refund Request Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Offer Code Redeem Sheet"
+      }
+    ]
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}
