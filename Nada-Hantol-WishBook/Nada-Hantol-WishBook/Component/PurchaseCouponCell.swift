@@ -16,6 +16,7 @@ struct PurchaseCouponCell: View {
         case purchase
         case refund
         case used
+        case pendingRefund
     }
     
     let purchaseCoupon: PurchaseCoupon
@@ -120,6 +121,24 @@ struct PurchaseCouponCell: View {
                     .clipShape(RoundedRectangle(cornerRadius: 4))
                 
                 Text("사용일 \(purchaseCoupon.usedDate?.yearMonthDay ?? "ERROR")")
+                    .systemFont(.semiBold, 12)
+                    .foregroundStyle(.detailText)
+                
+            case .pendingRefund:
+                Button {
+                    buttonTap()
+                } label: {
+                    Text("환불대기")
+                        .systemFont(.bold, 14)
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 6)
+                        .background(Color(.warningBG))
+                        .cornerRadius(8)
+                        .foregroundColor(.warningText)
+                        .opacity(0.5)
+                }
+                
+                Text("구매일 \(purchaseCoupon.purchaseDate.yearMonthDay)")
                     .systemFont(.semiBold, 12)
                     .foregroundStyle(.detailText)
             }

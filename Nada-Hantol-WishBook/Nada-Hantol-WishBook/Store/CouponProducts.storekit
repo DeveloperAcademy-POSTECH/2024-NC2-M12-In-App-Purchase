@@ -5,14 +5,14 @@
   ],
   "products" : [
     {
-      "displayPrice" : "0.99",
+      "displayPrice" : "3500",
       "familyShareable" : false,
       "internalID" : "90D8FB25",
       "localizations" : [
         {
-          "description" : "🧊🥶❄️",
+          "description" : "",
           "displayName" : "도서관에서 얼음 떠오기",
-          "locale" : "en_US"
+          "locale" : "ko"
         }
       ],
       "productID" : "coupon0",
@@ -20,14 +20,14 @@
       "type" : "Consumable"
     },
     {
-      "displayPrice" : "3.99",
+      "displayPrice" : "150000",
       "familyShareable" : false,
       "internalID" : "E4339101",
       "localizations" : [
         {
           "description" : "",
-          "displayName" : "목적지까지 데려다주기",
-          "locale" : "en_US"
+          "displayName" : "집가는 길 바래다주기",
+          "locale" : "ko"
         }
       ],
       "productID" : "coupon1",
@@ -35,14 +35,14 @@
       "type" : "Consumable"
     },
     {
-      "displayPrice" : "8.99",
+      "displayPrice" : "320000",
       "familyShareable" : false,
       "internalID" : "8C256DAB",
       "localizations" : [
         {
           "description" : "",
           "displayName" : "편의점 음식 대신 사다주기",
-          "locale" : "en_US"
+          "locale" : "ko"
         }
       ],
       "productID" : "coupon2",
@@ -52,6 +52,8 @@
   ],
   "settings" : {
     "_failTransactionsEnabled" : false,
+    "_locale" : "ko",
+    "_storefront" : "KOR",
     "_storeKitErrors" : [
       {
         "current" : null,

@@ -6,10 +6,15 @@
 //
 
 import SwiftUI
+import StoreKit
 
 struct RefundCouponView: View {
     
     @Environment(CouponUseCase.self) private var couponUseCase
+    @Environment(\.dismiss) private var dismiss
+    
+    @State var selectedTransactionID: UInt64?
+    @State private var isRefundSheetPresented = false
     
     var body: some View {
         
@@ -28,18 +33,36 @@ struct RefundCouponView: View {
             
             ScrollView {
                 VStack(spacing: 16) {
-                    ForEach(couponUseCase.purchaseCoupons) { coupon in
+                    ForEach(couponUseCase.refundCoupons) { coupon in
                         PurchaseCouponCell(
                             purchaseCoupon: coupon,
-                            couponType: .refund
+                            couponType: coupon.isRefundPending ? .pendingRefund : .refund
                         ) {
-                            // TODO: 환불 로직
+                            selectedTransactionID = coupon.transactionId
+                            print("쿠폰이름: \(coupon.emoji)")
+                            print("환불할 아이디: \(selectedTransactionID!)")
+                            isRefundSheetPresented.toggle()
                         }
                         .padding(.horizontal, 22)
                     }
                 }
             }
         }
+        .refundRequestSheet(
+            for: selectedTransactionID ?? 0,
+            isPresented: $isRefundSheetPresented
+        ) { result in
+            handleRefund(result: result)
+        }
+    }
+    
+    func handleRefund(
+        result: Result<
+        StoreKit.Transaction.RefundRequestStatus,
+        StoreKit.Transaction.RefundRequestError
+        >
+    ) {
+        couponUseCase.refundCoupon(transactionId: selectedTransactionID ?? 0)
     }
 }
 

@@ -46,7 +46,7 @@ struct PurchasedCouponView: View {
                     .systemFont(.bold, 14)
                     .foregroundStyle(.detailText)
                 
-                Text("$\(couponUseCase.totalPrice())달러")
+                Text("₩\(couponUseCase.totalPrice())원")
                     .systemFont(.bold, 14)
                     .foregroundStyle(.point)
                 
@@ -60,7 +60,7 @@ struct PurchasedCouponView: View {
                 .frame(height: 32)
             
             HStack {
-                Text("전체 \(couponUseCase.purchaseCoupons.count)")
+                Text("전체 \(coupons.count)")
                     .systemFont(.semiBold, 14)
                     .foregroundStyle(.detailText)
                 
@@ -97,7 +97,7 @@ struct PurchasedCouponView: View {
                 }
             }
             .alert(
-                "\(couponUseCase.toSaleCoupon(selectedCoupon ?? .init(couponId: 0)).title) 쿠폰을 사용하시겠습니까?",
+                "\(couponUseCase.toSaleCoupon(selectedCoupon ?? .init(couponId: 0, transactionId: 0)).title) 쿠폰을 사용하시겠습니까?",
                 isPresented: $isCouponUseAlertPresented,
                 actions: {
                     Button("그만두기", role: .none) {}

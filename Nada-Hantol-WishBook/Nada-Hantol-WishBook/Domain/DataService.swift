@@ -35,8 +35,12 @@ extension DataService {
     }
     
     /// 쿠폰을 생성합니다.
-    func createCoupon(id: Int, purchaseDate: Date) {
-        let newCoupon = PurchaseCoupon(couponId: id, purchaseDate: purchaseDate)
+    func createCoupon(id: Int, transactionId: UInt64, purchaseDate: Date) {
+        let newCoupon = PurchaseCoupon(
+            couponId: id,
+            transactionId: transactionId,
+            purchaseDate: purchaseDate
+        )
         modelContext.insert(newCoupon)
     }
     
@@ -46,8 +50,10 @@ extension DataService {
         coupon.usedDate = .now
     }
     
-    /// 쿠폰을 삭제합니다.
-    func deleteCoupon() {
-        
+    /// 쿠폰을 환불 대기 상태로 전환합니다.
+    func pendingRefund(_ transactionId: UInt64) {
+        guard let coupon = fetchCoupons().filter({ $0.transactionId == transactionId }).first
+        else { return }
+        coupon.isRefundPending = true
     }
 }

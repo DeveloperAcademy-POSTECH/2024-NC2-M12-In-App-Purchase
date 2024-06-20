@@ -10,6 +10,12 @@ import StoreKit
 
 final class StoreService {
     
+    /// 인앱 구매 성공 시 반환하는 구조체
+    struct IAPResult {
+        let transactionId: UInt64
+        let purchaseDate: Date
+    }
+    
     /// 인앱 구매 과정에서 발생할 수 있는 Error 열거형
     enum IAPError: Error {
         case cannotFoundProduct
@@ -28,12 +34,12 @@ final class StoreService {
     
     init() {
         // 리스너 실행
-        transactionListener = listenForTransaction()
+        // transactionListener = listenForTransaction()
         
         Task {
             
             // 초기화와 동시에 사용자 자격 확인
-            await updateCurrentEntitlements()
+            await fetchCurrentEntitlements()
         }
     }
     
@@ -74,7 +80,7 @@ final class StoreService {
     
     /// 상품 구매하기
     @MainActor
-    func purchase(id: Int) async throws -> Result<Date, IAPError> {
+    func purchase(id: Int) async throws -> Result<IAPResult, IAPError> {
         guard let product = try await Product.products(for: ["coupon\(id)"]).first else {
             return .failure(.cannotFoundProduct)
         }
@@ -87,14 +93,19 @@ final class StoreService {
         switch result {
         case .success(.verified(let transaction)):
             await transaction.finish()
-            return .success(transaction.purchaseDate)
+            return .success(
+                IAPResult(
+                    transactionId: transaction.id,
+                    purchaseDate: transaction.purchaseDate
+                )
+            )
             
         default: return .failure(.unverified)
         }
     }
     
     /// Transaction Listener
-    func listenForTransaction() -> Task<Void, Error> {
+    private func listenForTransaction() -> Task<Void, Error> {
         
         // 1. Listen 매커니즘은 실시간으로 작업을 수행해야 함.
         // 하지만 앱은 별개로 UI 액션과 같은 다른 작업을 수행해야 하기 때문에 Task를 분리하는 것.
@@ -104,14 +115,15 @@ final class StoreService {
             for await verificationResult in Transaction.updates {
                 
                 // 3. Transaction 결과에 따른 핸들링.
-                await self.handle(transactionVerfication: verificationResult)
+                await self.handle(transactionVerification: verificationResult)
             }
         }
     }
     
     /// Transaction 결과에 따른 처리
     @MainActor
-    private func handle(transactionVerfication result: VerificationResult<Transaction>) async {
+    @discardableResult
+    private func handle(transactionVerification result: VerificationResult<Transaction>) async -> Transaction? {
         switch result {
             
             // 거래 성공!
@@ -120,21 +132,30 @@ final class StoreService {
             
             // 거래 프로세스 종료
             await transaction.finish()
+            return transaction
             
             // 거래 실패.
-        default: return
+        default: return nil
         }
     }
     
     /// 현재 사용자의 자격 처리
-    private func updateCurrentEntitlements() async {
+    func fetchCurrentEntitlements() async -> [Transaction] {
+        
+        var transactions: [Transaction] = []
         
         // currentEntitlements
         // 인터넷에 연결되어 있는 경우 최신 Transaction을 검색
         // 인터넷 연결이 없으면 로컬로 캐시된 데이터를 가져옴.
         // + 인터넷 연결이 복원되면 거래가 자동으로 기기에 동기화.
         for await result in Transaction.currentEntitlements {
-            await self.handle(transactionVerfication: result)
+            guard let transaction = await self.handle(transactionVerification: result) else {
+                return []
+            }
+            
+            transactions.append(transaction)
         }
+        
+        return transactions
     }
 }

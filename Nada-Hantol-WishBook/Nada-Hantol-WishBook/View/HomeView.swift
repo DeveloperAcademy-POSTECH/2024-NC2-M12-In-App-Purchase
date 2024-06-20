@@ -120,7 +120,7 @@ struct HomeCouponListView: View {
             VStack(spacing: 16) {
                 ForEach(couponUseCase.saleCoupons) { coupon in
                     SaleCouponCell(saleCoupon: coupon) {
-                        couponUseCase.purchaseCoupon(id: coupon.id)
+                        couponUseCase.purchaseCoupon(couponId: coupon.id)
                     }
                     .padding(.horizontal, 24)
                 }

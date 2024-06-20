@@ -12,22 +12,28 @@ import SwiftData
 final class PurchaseCoupon: Identifiable {
     
     let couponId: Int
+    let transactionId: UInt64
     
     let purchaseDate: Date
     var usedDate: Date?
     
     var isUsed: Bool
+    var isRefundPending: Bool
     
     init(
         couponId: Int,
+        transactionId: UInt64,
         purchaseDate: Date = .now,
         usedDate: Date? = nil,
-        isUsed: Bool = false
+        isUsed: Bool = false,
+        isRefundPending: Bool = false
     ) {
         self.couponId = couponId
+        self.transactionId = transactionId
         self.purchaseDate = purchaseDate
         self.usedDate = usedDate
         self.isUsed = isUsed
+        self.isRefundPending = isRefundPending
     }
 }
 
